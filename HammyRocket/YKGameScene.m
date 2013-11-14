@@ -7,6 +7,7 @@
 //
 
 #import "YKGameScene.h"
+#import "YKAirplaneNode.h"
 
 @implementation YKGameScene {
   BOOL _contentCreated;

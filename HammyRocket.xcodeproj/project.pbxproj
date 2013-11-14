@@ -99,6 +99,8 @@
 		8432EEB218355FA500684F7E /* CPRocketNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEAB18355FA500684F7E /* CPRocketNode.m */; };
 		8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEAD18355FA500684F7E /* CPSimpleSpriteFactory.m */; };
 		8432EEB418355FA500684F7E /* CPSmokeEmitterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEAF18355FA500684F7E /* CPSmokeEmitterNode.m */; };
+		8432EEB71835620100684F7E /* YKAirplaneNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEB61835620100684F7E /* YKAirplaneNode.m */; };
+		8432EEBB1835629200684F7E /* UIImage+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEBA1835629200684F7E /* UIImage+YKUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +219,10 @@
 		8432EEAD18355FA500684F7E /* CPSimpleSpriteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSimpleSpriteFactory.m; sourceTree = "<group>"; };
 		8432EEAE18355FA500684F7E /* CPSmokeEmitterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSmokeEmitterNode.h; sourceTree = "<group>"; };
 		8432EEAF18355FA500684F7E /* CPSmokeEmitterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSmokeEmitterNode.m; sourceTree = "<group>"; };
+		8432EEB51835620100684F7E /* YKAirplaneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKAirplaneNode.h; sourceTree = "<group>"; };
+		8432EEB61835620100684F7E /* YKAirplaneNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKAirplaneNode.m; sourceTree = "<group>"; };
+		8432EEB91835629200684F7E /* UIImage+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YKUtils.h"; sourceTree = "<group>"; };
+		8432EEBA1835629200684F7E /* UIImage+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YKUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +282,8 @@
 			children = (
 				1553D4E81835610B005AD9EF /* YKHammyRocket.h */,
 				1553D4E91835610B005AD9EF /* YKHammyRocket.m */,
+				8432EEB51835620100684F7E /* YKAirplaneNode.h */,
+				8432EEB61835620100684F7E /* YKAirplaneNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 		840180471835537700583789 /* HammyRocket */ = {
 			isa = PBXGroup;
 			children = (
+				8432EEB81835626D00684F7E /* Utils */,
 				1553D4E718356093005AD9EF /* Nodes */,
 				1553D4BE18355919005AD9EF /* Images */,
 				840180501835537700583789 /* YKAppDelegate.h */,
@@ -514,6 +523,15 @@
 			path = SpriteKitEffects;
 			sourceTree = "<group>";
 		};
+		8432EEB81835626D00684F7E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8432EEB91835629200684F7E /* UIImage+YKUtils.h */,
+				8432EEBA1835629200684F7E /* UIImage+YKUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -691,7 +709,9 @@
 				840180521835537700583789 /* YKAppDelegate.m in Sources */,
 				8432EEB418355FA500684F7E /* CPSmokeEmitterNode.m in Sources */,
 				8401804E1835537700583789 /* main.m in Sources */,
+				8432EEBB1835629200684F7E /* UIImage+YKUtils.m in Sources */,
 				8432EEB018355FA500684F7E /* CPExplosionEmitterNode.m in Sources */,
+				8432EEB71835620100684F7E /* YKAirplaneNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
