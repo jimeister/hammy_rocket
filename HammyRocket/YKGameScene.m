@@ -20,6 +20,7 @@
   BOOL _contentCreated;
   NSTimeInterval _lastUpdateTime;
   BOOL _touched;
+  BOOL _canFire;
   CGPoint _lastTouch;
 }
 
@@ -43,8 +44,6 @@
   _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
   [self.ammo createFireAction];
   [self addChild:self.ammo];
-  
-  [self.rocket runAction:[SKAction repeatActionForever:self.ammo.fire]];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -68,6 +67,12 @@
   NSTimeInterval diff = currentTime - _lastUpdateTime;
   
   [self _handlePlayerMoveWithDiff:diff];
+  if (_touched && _canFire) {
+    _canFire = NO;
+    [self.rocket runAction:self.ammo.fire completion:^() {
+      _canFire = YES;
+    }];
+  }
   
   // Update ammo position here
   [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *node, BOOL *stop) {
@@ -115,6 +120,7 @@
   else {
     self.view.paused = NO;
     _touched = YES;
+    _canFire = YES;
     UITouch *touch = [touches anyObject];
     _lastTouch = [touch locationInNode:self];
   }
