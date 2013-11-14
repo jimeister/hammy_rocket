@@ -9,12 +9,27 @@
 #import "YKGameScene.h"
 #import "YKAirplaneNode.h"
 #import "CPMath.h"
+#import "YKLevelScheduler.h"
+#import "YKEnemyNode.h"
+
+@interface YKGameScene ()
+@property (strong, nonatomic) YKLevelScheduler *scheduler;
+@end
 
 @implementation YKGameScene {
   BOOL _contentCreated;
   NSTimeInterval _lastUpdateTime;
   BOOL _touched;
   CGPoint _lastTouch;
+}
+
+@synthesize scheduler=_scheduler;
+
+- (YKLevelScheduler *)scheduler {
+  if (!_scheduler) {
+    _scheduler = [[YKLevelScheduler alloc] init];
+  }
+  return _scheduler;
 }
 
 - (void)_createSceneContent {
@@ -37,9 +52,22 @@
     [self _createSceneContent];
   }
 }
+  
+- (void)_handlePlayerMoveWithDiff:(NSTimeInterval)diff {
+  if (_touched) {
+    CGFloat rocketVelocity = _rocket.maxVelocity * diff;
+    CGPoint rocketPosition = _rocket.position;
+    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y - rocketPosition.y);
+    CGFloat scale = rocketVelocity / CPCGVectorMagnitude(direction);
+    CGVector velocity = CGVectorMake(direction.dx * scale, direction.dy * scale);
+    _rocket.position = CGPointMake(rocketPosition.x + velocity.dx, rocketPosition.y + velocity.dy);
+  }
+}
 
 - (void)update:(NSTimeInterval)currentTime {
   NSTimeInterval diff = currentTime - _lastUpdateTime;
+  
+  [self _handlePlayerMoveWithDiff:diff];
   
   // Update ammo position here
   [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *node, BOOL *stop) {
@@ -56,15 +84,23 @@
       [node removeFromParent];
     }
   }];
-  
-  if (_touched) {
-    CGFloat rocketVelocity = _rocket.maxVelocity * diff;
-    CGPoint rocketPosition = _rocket.position;
-    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y - rocketPosition.y);
-    CGFloat scale = rocketVelocity / CPCGVectorMagnitude(direction);
-    CGVector velocity = CGVectorMake(direction.dx * scale, direction.dy * scale);
-    _rocket.position = CGPointMake(rocketPosition.x + velocity.dx, rocketPosition.y + velocity.dy);
+
+  YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];
+  for (YKLevelEnemyBirth *enemyBirth in event.enemies) {
+    enemyBirth.enemyNode.position = CGPointMake(enemyBirth.birthPlace.x, enemyBirth.birthPlace.y + CGRectGetMaxY(self.frame));
+    enemyBirth.enemyNode.velocity = CGVectorMake(0, -90);
+    [self addChild:enemyBirth.enemyNode];
   }
+  
+  [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
+    YKEnemyNode *enemy = (YKEnemyNode *)node;
+    enemy.position = CGPointMake(enemy.position.x + enemy.velocity.dx * diff, enemy.position.y + enemy.velocity.dy * diff);
+    
+    if (enemy.position.y < -50) {
+      [enemy removeFromParent];
+    }
+  }];
+  
   
   _lastUpdateTime = currentTime;
 }

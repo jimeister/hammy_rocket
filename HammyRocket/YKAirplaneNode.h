@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 HammyRocket. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "YKEnemyNode.h"
 
-@interface YKAirplaneNode : SKNode
+@interface YKAirplaneNode : YKEnemyNode
 
 - (instancetype)initWithStyle:(NSInteger)style;
 

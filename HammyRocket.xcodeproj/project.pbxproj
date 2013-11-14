@@ -102,6 +102,9 @@
 		8432EEB418355FA500684F7E /* CPSmokeEmitterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEAF18355FA500684F7E /* CPSmokeEmitterNode.m */; };
 		8432EEB71835620100684F7E /* YKAirplaneNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEB61835620100684F7E /* YKAirplaneNode.m */; };
 		8432EEBB1835629200684F7E /* UIImage+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EEBA1835629200684F7E /* UIImage+YKUtils.m */; };
+		84E867B318357743008D2B71 /* YKLevelScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B218357743008D2B71 /* YKLevelScheduler.m */; };
+		84E867B618357793008D2B71 /* YKLevelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B518357793008D2B71 /* YKLevelEvent.m */; };
+		84E867B918357F82008D2B71 /* YKEnemyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B818357F82008D2B71 /* YKEnemyNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +229,12 @@
 		8432EEB61835620100684F7E /* YKAirplaneNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKAirplaneNode.m; sourceTree = "<group>"; };
 		8432EEB91835629200684F7E /* UIImage+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YKUtils.h"; sourceTree = "<group>"; };
 		8432EEBA1835629200684F7E /* UIImage+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YKUtils.m"; sourceTree = "<group>"; };
+		84E867B118357743008D2B71 /* YKLevelScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLevelScheduler.h; sourceTree = "<group>"; };
+		84E867B218357743008D2B71 /* YKLevelScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLevelScheduler.m; sourceTree = "<group>"; };
+		84E867B418357793008D2B71 /* YKLevelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLevelEvent.h; sourceTree = "<group>"; };
+		84E867B518357793008D2B71 /* YKLevelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLevelEvent.m; sourceTree = "<group>"; };
+		84E867B718357F82008D2B71 /* YKEnemyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKEnemyNode.h; sourceTree = "<group>"; };
+		84E867B818357F82008D2B71 /* YKEnemyNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKEnemyNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +292,8 @@
 		1553D4E718356093005AD9EF /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				84E867B718357F82008D2B71 /* YKEnemyNode.h */,
+				84E867B818357F82008D2B71 /* YKEnemyNode.m */,
 				1553D4E81835610B005AD9EF /* YKHammyRocket.h */,
 				1553D4E91835610B005AD9EF /* YKHammyRocket.m */,
 				8432EEB51835620100684F7E /* YKAirplaneNode.h */,
@@ -499,6 +510,10 @@
 		8432EEA218355EA300684F7E /* Level */ = {
 			isa = PBXGroup;
 			children = (
+				84E867B118357743008D2B71 /* YKLevelScheduler.h */,
+				84E867B218357743008D2B71 /* YKLevelScheduler.m */,
+				84E867B418357793008D2B71 /* YKLevelEvent.h */,
+				84E867B518357793008D2B71 /* YKLevelEvent.m */,
 			);
 			name = Level;
 			sourceTree = "<group>";
@@ -711,11 +726,14 @@
 				8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */,
 				84018072183553BB00583789 /* YKSpriteViewController.m in Sources */,
 				840180761835561B00583789 /* YKTitleScene.m in Sources */,
+				84E867B618357793008D2B71 /* YKLevelEvent.m in Sources */,
 				1553D4EA1835610B005AD9EF /* YKHammyRocket.m in Sources */,
 				840180521835537700583789 /* YKAppDelegate.m in Sources */,
 				8432EEB418355FA500684F7E /* CPSmokeEmitterNode.m in Sources */,
 				8401804E1835537700583789 /* main.m in Sources */,
+				84E867B918357F82008D2B71 /* YKEnemyNode.m in Sources */,
 				8432EEBB1835629200684F7E /* UIImage+YKUtils.m in Sources */,
+				84E867B318357743008D2B71 /* YKLevelScheduler.m in Sources */,
 				8432EEB018355FA500684F7E /* CPExplosionEmitterNode.m in Sources */,
 				8432EEB71835620100684F7E /* YKAirplaneNode.m in Sources */,
 			);
