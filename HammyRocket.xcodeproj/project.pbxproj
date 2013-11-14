@@ -31,6 +31,8 @@
 		1553D4ED18357571005AD9EF /* YKRocketAmmo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4EC18357571005AD9EF /* YKRocketAmmo.m */; };
 		1553D4F018358831005AD9EF /* YKInstructionsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4EF18358831005AD9EF /* YKInstructionsScene.m */; };
 		1553D4F318358B88005AD9EF /* YKHighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4F218358B88005AD9EF /* YKHighScoresScene.m */; };
+		1553D4F618359066005AD9EF /* flame.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4F418359066005AD9EF /* flame.png */; };
+		1553D4F718359066005AD9EF /* flame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4F518359066005AD9EF /* flame@2x.png */; };
 		840180421835537700583789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180411835537700583789 /* Foundation.framework */; };
 		840180441835537700583789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180431835537700583789 /* CoreGraphics.framework */; };
 		840180461835537700583789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180451835537700583789 /* UIKit.framework */; };
@@ -149,6 +151,8 @@
 		1553D4EF18358831005AD9EF /* YKInstructionsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKInstructionsScene.m; sourceTree = "<group>"; };
 		1553D4F118358B88005AD9EF /* YKHighScoresScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKHighScoresScene.h; sourceTree = "<group>"; };
 		1553D4F218358B88005AD9EF /* YKHighScoresScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHighScoresScene.m; sourceTree = "<group>"; };
+		1553D4F418359066005AD9EF /* flame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flame.png; sourceTree = "<group>"; };
+		1553D4F518359066005AD9EF /* flame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flame@2x.png"; sourceTree = "<group>"; };
 		8401803E1835537700583789 /* HammyRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammyRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840180411835537700583789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		840180431835537700583789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -275,6 +279,8 @@
 			children = (
 				8432EE3218355D4F00684F7E /* spritelib_gpl */,
 				1553D4BF18355919005AD9EF /* contribute_review_1star.png */,
+				1553D4F418359066005AD9EF /* flame.png */,
+				1553D4F518359066005AD9EF /* flame@2x.png */,
 				1553D4C018355919005AD9EF /* contribute_review_1star@2x.png */,
 				1553D4C118355919005AD9EF /* contribute_review_2star.png */,
 				1553D4C218355919005AD9EF /* contribute_review_2star@2x.png */,
@@ -644,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8432EE8B18355D4F00684F7E /* char2.png in Resources */,
+				1553D4F618359066005AD9EF /* flame.png in Resources */,
 				8432EE9318355D4F00684F7E /* dino.png in Resources */,
 				1553D4DD18355919005AD9EF /* hammy.png in Resources */,
 				1553D4D318355919005AD9EF /* contribute_review_1star.png in Resources */,
@@ -716,6 +723,7 @@
 				8432EE7518355D4F00684F7E /* 32x32.png in Resources */,
 				1553D4D918355919005AD9EF /* contribute_review_4star.png in Resources */,
 				8432EE9D18355D4F00684F7E /* invader.png in Resources */,
+				1553D4F718359066005AD9EF /* flame@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

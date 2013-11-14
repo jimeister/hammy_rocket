@@ -32,6 +32,11 @@
   self.rocket_interior.position = CGPointMake(0, 0);
   self.rocket_interior.zPosition = self.hammy.zPosition - 1;
   [self addChild:self.rocket_interior];
+  
+  self.flame = [SKSpriteNode spriteNodeWithImageNamed:@"flame.png"];
+  self.flame.position = CGPointMake(0, -35.0);
+  self.flame.zPosition = self.rocket_interior.zPosition - 1;
+  [self addChild:self.flame];
 }
 
 @end

@@ -13,6 +13,7 @@
 @property (nonatomic, strong) SKSpriteNode *rocket;
 @property (nonatomic, strong) SKSpriteNode *rocket_interior;
 @property (nonatomic, strong) SKSpriteNode *hammy;
+@property (nonatomic, strong) SKSpriteNode *flame;
 
 @property (nonatomic) CGFloat maxVelocity;
 
