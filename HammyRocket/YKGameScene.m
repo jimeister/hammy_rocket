@@ -14,18 +14,11 @@
 
 - (void)_createSceneContent {
   self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.3 alpha:1.0];
-  SKSpriteNode *rocket = [SKSpriteNode spriteNodeWithImageNamed:@"rocket.png"];
-  rocket.position = CGPointMake(CGRectGetMidX(self.frame), 100);
   
-  SKSpriteNode *rocket_interior = [SKSpriteNode spriteNodeWithImageNamed:@"rocket_interior.png"];
-  rocket_interior.position = CGPointMake(0, 0);
-  [rocket addChild:rocket_interior];
+  _rocket = [[YKHammyRocket alloc] init];
+  [self.rocket createHammyRocketAtPosition:CGPointMake(CGRectGetMidX(self.frame), 100)];
   
-  SKSpriteNode *hammy = [SKSpriteNode spriteNodeWithImageNamed:@"hammy.png"];
-  hammy.position = CGPointMake(0, -10.0);
-  [rocket addChild:hammy];
-  
-  [self addChild:rocket];
+  [self addChild:self.rocket.rocket];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -34,11 +27,12 @@
   }
 }
 
-#pragma mark UIResponder
-
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  UITouch *firstTouch = [[touches allObjects] objectAtIndex:0];
-  NSLog(@"%@", firstTouch);
+  UITouch *touch = [touches anyObject];
+  CGPoint currentTouchPoint = [touch locationInNode:self];
+  
+  SKAction *move = [SKAction moveTo:currentTouchPoint duration:0.1];
+  [self.rocket.rocket runAction:move];
 }
 
 @end

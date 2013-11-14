@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "YKHammyRocket.h"
 
 @interface YKGameScene : SKScene
+
+@property (nonatomic, strong) YKHammyRocket *rocket;
 
 @end
