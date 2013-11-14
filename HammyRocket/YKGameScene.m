@@ -34,4 +34,11 @@
   }
 }
 
+#pragma mark UIResponder
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  UITouch *firstTouch = [[touches allObjects] objectAtIndex:0];
+  NSLog(@"%@", firstTouch);
+}
+
 @end
