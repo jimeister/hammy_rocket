@@ -67,22 +67,18 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   UITouch *touch = [touches anyObject];
-  CGPoint currentTouchPoint = [touch locationInNode:self];
-  SKAction *move = [SKAction moveTo:currentTouchPoint duration:0.1];
-  [self.rocket runAction:move];
   _lastTouch = [touch locationInNode:self];
 }
 
-<<<<<<< HEAD
 - (void)createAmmo {
   SKSpriteNode *ammo = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(2,5)];
   ammo.position = CGPointMake(self.rocket.position.x, self.rocket.position.y + 40);
   ammo.name = @"ammo";
   [self addChild:ammo];
-=======
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   _touched = NO;
->>>>>>> Refactor hammy move, add update loop
 }
 
 @end
