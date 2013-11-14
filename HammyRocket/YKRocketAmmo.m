@@ -7,6 +7,7 @@
 //
 
 #import "YKRocketAmmo.h"
+#import "UIImage+YKUtils.h"
 
 @interface YKRocketAmmo ()
 @property (nonatomic) CGFloat fireRate;
@@ -22,6 +23,15 @@
   return self;
 }
 
++ (UIImage *)singleAmmoImage {
+  static UIImage *image = nil;
+  if (!image) {
+    UIImage *template = [UIImage imageNamed:@"1945.png"];
+    image = [template yk_imageByCroppingWithRect:CGRectMake(4 + 33 + 11, 4 + 33*5 + 7, 9, 20)];
+  }
+  return image;
+}
+
 - (void)createFireAction {
   self.fire = [SKAction sequence: @[
                                     [SKAction performSelector:@selector(_createAmmo) onTarget:self],
@@ -30,7 +40,7 @@
 }
 
 - (void)_createAmmo {
-  SKSpriteNode *ammo = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(2,5)];
+  SKSpriteNode *ammo = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
   ammo.position = CGPointMake(0, 0);
   ammo.name = @"ammo";
   [self addChild:ammo];
