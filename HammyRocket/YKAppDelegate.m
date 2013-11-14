@@ -7,16 +7,22 @@
 //
 
 #import "YKAppDelegate.h"
+#import "YKSpriteViewController.h"
 
 @implementation YKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    return YES;
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+  YKSpriteViewController *viewController = [[YKSpriteViewController alloc] init];
+  
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+  navController.navigationBarHidden = YES;
+  self.window.rootViewController = navController;
+  
+  [self.window makeKeyAndVisible];
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
