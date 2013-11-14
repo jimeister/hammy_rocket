@@ -24,7 +24,7 @@ static NSString *const kStartNode = @"kStartNode";
   SKLabelNode *startLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
   startLabel.text = @"Start";
   startLabel.name = kStartNode;
-  startLabel.fontSize = 30.0;
+  startLabel.fontSize = 60.0;
   startLabel.fontColor = [UIColor whiteColor];
   startLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
   [self addChild:startLabel];
