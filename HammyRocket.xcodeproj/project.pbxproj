@@ -105,6 +105,7 @@
 		84E867B318357743008D2B71 /* YKLevelScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B218357743008D2B71 /* YKLevelScheduler.m */; };
 		84E867B618357793008D2B71 /* YKLevelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B518357793008D2B71 /* YKLevelEvent.m */; };
 		84E867B918357F82008D2B71 /* YKEnemyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B818357F82008D2B71 /* YKEnemyNode.m */; };
+		84E867BC18358727008D2B71 /* YKEnemyAmmo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867BB18358727008D2B71 /* YKEnemyAmmo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,8 @@
 		84E867B518357793008D2B71 /* YKLevelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLevelEvent.m; sourceTree = "<group>"; };
 		84E867B718357F82008D2B71 /* YKEnemyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKEnemyNode.h; sourceTree = "<group>"; };
 		84E867B818357F82008D2B71 /* YKEnemyNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKEnemyNode.m; sourceTree = "<group>"; };
+		84E867BA18358727008D2B71 /* YKEnemyAmmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKEnemyAmmo.h; sourceTree = "<group>"; };
+		84E867BB18358727008D2B71 /* YKEnemyAmmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKEnemyAmmo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,14 +295,16 @@
 		1553D4E718356093005AD9EF /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				84E867B718357F82008D2B71 /* YKEnemyNode.h */,
-				84E867B818357F82008D2B71 /* YKEnemyNode.m */,
 				1553D4E81835610B005AD9EF /* YKHammyRocket.h */,
 				1553D4E91835610B005AD9EF /* YKHammyRocket.m */,
+				84E867B718357F82008D2B71 /* YKEnemyNode.h */,
+				84E867B818357F82008D2B71 /* YKEnemyNode.m */,
 				8432EEB51835620100684F7E /* YKAirplaneNode.h */,
 				8432EEB61835620100684F7E /* YKAirplaneNode.m */,
 				1553D4EB18357571005AD9EF /* YKRocketAmmo.h */,
 				1553D4EC18357571005AD9EF /* YKRocketAmmo.m */,
+				84E867BA18358727008D2B71 /* YKEnemyAmmo.h */,
+				84E867BB18358727008D2B71 /* YKEnemyAmmo.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -721,6 +726,7 @@
 			files = (
 				8432EEB118355FA500684F7E /* CPMath.m in Sources */,
 				8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */,
+				84E867BC18358727008D2B71 /* YKEnemyAmmo.m in Sources */,
 				8432EEB218355FA500684F7E /* CPRocketNode.m in Sources */,
 				1553D4ED18357571005AD9EF /* YKRocketAmmo.m in Sources */,
 				8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */,

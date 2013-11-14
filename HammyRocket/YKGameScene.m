@@ -94,12 +94,10 @@
   [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
     YKEnemyNode *enemy = (YKEnemyNode *)node;
     enemy.position = CGPointMake(enemy.position.x + enemy.velocity.dx * diff, enemy.position.y + enemy.velocity.dy * diff);
+    [enemy update:diff];
     
-    if (enemy.position.y < CGRectGetMidY(self.frame)) {
-      [(YKAirplaneNode *)enemy turnRightDown];
-    }
-    
-    if (enemy.position.y < -50) {
+    if (enemy.position.y < -50 || enemy.position.y > CGRectGetMaxY(self.frame) + 50 ||
+        enemy.position.x < -50 || enemy.position.x > CGRectGetMaxX(self.frame) + 50) {
       [enemy removeFromParent];
     }
   }];

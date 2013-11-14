@@ -15,8 +15,17 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
 - (instancetype)init {
   if ((self = [super init])) {
     self.name = YKEnemyNodeName;
+    _timeAlive = 0.0;
   }
   return self;
+}
+
+- (YKEnemyAmmo *)ammo {
+  return nil;
+}
+
+- (void)update:(NSTimeInterval)diff {
+  _timeAlive += diff;
 }
 
 @end

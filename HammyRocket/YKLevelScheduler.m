@@ -22,19 +22,21 @@
   return self;
 }
 
-- (YKLevelEvent *)basicEnemyEvent {
+- (YKLevelEvent *)basicEnemyEventWithNumEnemies:(NSUInteger)numEnemies x:(CGFloat)x style:(NSInteger)style {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
-  event.enemies = @[
-                    [YKLevelEnemyBirth enemyBirthWithNode:[[YKAirplaneNode alloc] initWithStyle:0] birthPlace:CGPointMake(30, 20)],
-                    [YKLevelEnemyBirth enemyBirthWithNode:[[YKAirplaneNode alloc] initWithStyle:0] birthPlace:CGPointMake(90, 20)],
-                    [YKLevelEnemyBirth enemyBirthWithNode:[[YKAirplaneNode alloc] initWithStyle:0] birthPlace:CGPointMake(150, 20)]
-                    ];
+  NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
+  for (NSUInteger i = 0; i < numEnemies; ++i) {
+    YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
+    [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:CGPointMake(x + 60*i, 20)]];
+  }
+  event.enemies = enemies;
   return event;
 }
 
 - (NSDictionary *)_gameEvents {
   return @{
-           @(3) : [self basicEnemyEvent],
+           @(3) : [self basicEnemyEventWithNumEnemies:3 x:30 style:0],
+           @(6) : [self basicEnemyEventWithNumEnemies:6 x:80 style:3],
            };
 }
 
@@ -48,7 +50,7 @@
     _startTime = currentTime;
   }
   
-  NSInteger realTime = (NSInteger)(currentTime - _startTime) % 5;
+  NSInteger realTime = (NSInteger)(currentTime - _startTime) % 10;
   if (realTime == 0) {
     [self _resetEvents];
   }

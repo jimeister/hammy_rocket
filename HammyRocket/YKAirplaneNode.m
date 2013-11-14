@@ -27,7 +27,6 @@
     _images = [[[self class] planeImages] objectAtIndex:_style];
     _bodyNode = self.bodyNode;
     self.velocity = CGVectorMake(0, -90);
-
   }
   return self;
 }
@@ -61,6 +60,36 @@
 - (void)turnRightDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
   self.velocity = CGVectorMake(45, -45);
+}
+
+- (void)turnRight {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[2]];
+  self.velocity = CGVectorMake(45, 0);
+}
+
+- (void)turnRightUp {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[3]];
+  self.velocity = CGVectorMake(45, 45);
+}
+
+- (void)update:(NSTimeInterval)diff {
+  [super update:diff];
+  static NSArray *times = nil;
+  static NSDictionary *events = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    times = @[@(2), @(5), @(7)];
+    events = @{
+               @(2) : @"turnRightDown",
+               @(5) : @"turnRight",
+               @(7) : @"turnRightUp"
+               };
+  });
+  if (self.eventIndex < times.count && [times[self.eventIndex] isEqualToNumber:@((NSInteger)self.timeAlive)]) {
+    NSString *selectorName = events[times[self.eventIndex]];
+    [self performSelector:NSSelectorFromString(selectorName)];
+    self.eventIndex++;
+  }
 }
 
 @end
