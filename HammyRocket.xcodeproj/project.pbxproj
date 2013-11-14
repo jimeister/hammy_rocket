@@ -258,6 +258,7 @@
 			children = (
 				840180471835537700583789 /* HammyRocket */,
 				840180601835537700583789 /* HammyRocketTests */,
+				8432EEA418355EC900684F7E /* Libraries */,
 				840180401835537700583789 /* Frameworks */,
 				8401803F1835537700583789 /* Products */,
 			);
@@ -291,6 +292,8 @@
 				840180511835537700583789 /* YKAppDelegate.m */,
 				84018070183553BB00583789 /* YKSpriteViewController.h */,
 				84018071183553BB00583789 /* YKSpriteViewController.m */,
+				8432EEA218355EA300684F7E /* Level */,
+				8432EEA118355E4500684F7E /* Factories */,
 				84018073183555FE00583789 /* Scenes */,
 				840180531835537700583789 /* Images.xcassets */,
 				840180481835537700583789 /* Supporting Files */,
@@ -442,6 +445,27 @@
 				8432EE6B18355D4F00684F7E /* invader2.png */,
 			);
 			path = shooter;
+			sourceTree = "<group>";
+		};
+		8432EEA118355E4500684F7E /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		8432EEA218355EA300684F7E /* Level */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Level;
+			sourceTree = "<group>";
+		};
+		8432EEA418355EC900684F7E /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
