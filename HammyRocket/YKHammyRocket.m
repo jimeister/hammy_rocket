@@ -13,6 +13,7 @@
 - (instancetype)init {
   if ((self = [super init])) {
     [self _createHammyRocketNodes];
+    _maxVelocity = 150.0;
   }
   return self;
 }

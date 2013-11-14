@@ -14,6 +14,6 @@
 @property (nonatomic, strong) SKSpriteNode *rocket_interior;
 @property (nonatomic, strong) SKSpriteNode *hammy;
 
-@property (nonatomic) CGVector velocity;
+@property (nonatomic) CGFloat maxVelocity;
 
 @end
