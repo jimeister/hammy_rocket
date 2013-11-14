@@ -58,7 +58,7 @@
     CGFloat rocketVelocity = _rocket.maxVelocity * diff;
     CGPoint rocketPosition = _rocket.position;
     CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y - rocketPosition.y);
-    CGFloat scale = rocketVelocity / CPCGVectorMagnitude(direction);
+    CGFloat scale = MIN(rocketVelocity / CPCGVectorMagnitude(direction), 1.0);
     CGVector velocity = CGVectorMake(direction.dx * scale, direction.dy * scale);
     _rocket.position = CGPointMake(rocketPosition.x + velocity.dx, rocketPosition.y + velocity.dy);
   }
