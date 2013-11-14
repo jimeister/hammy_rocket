@@ -41,6 +41,7 @@
 		840180671835537700583789 /* HammyRocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 840180661835537700583789 /* HammyRocketTests.m */; };
 		84018072183553BB00583789 /* YKSpriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84018071183553BB00583789 /* YKSpriteViewController.m */; };
 		840180761835561B00583789 /* YKTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 840180751835561B00583789 /* YKTitleScene.m */; };
+		8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432EE3018355C8A00684F7E /* YKGameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		84018071183553BB00583789 /* YKSpriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSpriteViewController.m; sourceTree = "<group>"; };
 		840180741835561B00583789 /* YKTitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTitleScene.h; sourceTree = "<group>"; };
 		840180751835561B00583789 /* YKTitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTitleScene.m; sourceTree = "<group>"; };
+		8432EE2F18355C8A00684F7E /* YKGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGameScene.h; sourceTree = "<group>"; };
+		8432EE3018355C8A00684F7E /* YKGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,11 +183,11 @@
 		840180471835537700583789 /* HammyRocket */ = {
 			isa = PBXGroup;
 			children = (
+				1553D4BE18355919005AD9EF /* Images */,
 				840180501835537700583789 /* YKAppDelegate.h */,
 				840180511835537700583789 /* YKAppDelegate.m */,
 				84018070183553BB00583789 /* YKSpriteViewController.h */,
 				84018071183553BB00583789 /* YKSpriteViewController.m */,
-				1553D4BE18355919005AD9EF /* Images */,
 				84018073183555FE00583789 /* Scenes */,
 				840180531835537700583789 /* Images.xcassets */,
 				840180481835537700583789 /* Supporting Files */,
@@ -226,6 +229,8 @@
 			children = (
 				840180741835561B00583789 /* YKTitleScene.h */,
 				840180751835561B00583789 /* YKTitleScene.m */,
+				8432EE2F18355C8A00684F7E /* YKGameScene.h */,
+				8432EE3018355C8A00684F7E /* YKGameScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */,
 				84018072183553BB00583789 /* YKSpriteViewController.m in Sources */,
 				840180761835561B00583789 /* YKTitleScene.m in Sources */,
 				840180521835537700583789 /* YKAppDelegate.m in Sources */,
