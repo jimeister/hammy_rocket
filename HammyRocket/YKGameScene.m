@@ -109,9 +109,15 @@
 #pragma mark UIResponder
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  _touched = YES;
-  UITouch *touch = [touches anyObject];
-  _lastTouch = [touch locationInNode:self];
+  if ([touches count] == 3) {
+    self.view.paused = YES;
+  }
+  else {
+    self.view.paused = NO;
+    _touched = YES;
+    UITouch *touch = [touches anyObject];
+    _lastTouch = [touch locationInNode:self];
+  }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {

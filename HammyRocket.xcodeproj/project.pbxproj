@@ -29,6 +29,8 @@
 		1553D4E618355919005AD9EF /* yelp_small_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4D218355919005AD9EF /* yelp_small_logo@2x.png */; };
 		1553D4EA1835610B005AD9EF /* YKHammyRocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4E91835610B005AD9EF /* YKHammyRocket.m */; };
 		1553D4ED18357571005AD9EF /* YKRocketAmmo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4EC18357571005AD9EF /* YKRocketAmmo.m */; };
+		1553D4F018358831005AD9EF /* YKInstructionsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4EF18358831005AD9EF /* YKInstructionsScene.m */; };
+		1553D4F318358B88005AD9EF /* YKHighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4F218358B88005AD9EF /* YKHighScoresScene.m */; };
 		840180421835537700583789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180411835537700583789 /* Foundation.framework */; };
 		840180441835537700583789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180431835537700583789 /* CoreGraphics.framework */; };
 		840180461835537700583789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180451835537700583789 /* UIKit.framework */; };
@@ -143,6 +145,10 @@
 		1553D4E91835610B005AD9EF /* YKHammyRocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHammyRocket.m; sourceTree = "<group>"; };
 		1553D4EB18357571005AD9EF /* YKRocketAmmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKRocketAmmo.h; sourceTree = "<group>"; };
 		1553D4EC18357571005AD9EF /* YKRocketAmmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKRocketAmmo.m; sourceTree = "<group>"; };
+		1553D4EE18358831005AD9EF /* YKInstructionsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKInstructionsScene.h; sourceTree = "<group>"; };
+		1553D4EF18358831005AD9EF /* YKInstructionsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKInstructionsScene.m; sourceTree = "<group>"; };
+		1553D4F118358B88005AD9EF /* YKHighScoresScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKHighScoresScene.h; sourceTree = "<group>"; };
+		1553D4F218358B88005AD9EF /* YKHighScoresScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHighScoresScene.m; sourceTree = "<group>"; };
 		8401803E1835537700583789 /* HammyRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammyRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840180411835537700583789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		840180431835537700583789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -395,6 +401,10 @@
 				840180751835561B00583789 /* YKTitleScene.m */,
 				8432EE2F18355C8A00684F7E /* YKGameScene.h */,
 				8432EE3018355C8A00684F7E /* YKGameScene.m */,
+				1553D4EE18358831005AD9EF /* YKInstructionsScene.h */,
+				1553D4EF18358831005AD9EF /* YKInstructionsScene.m */,
+				1553D4F118358B88005AD9EF /* YKHighScoresScene.h */,
+				1553D4F218358B88005AD9EF /* YKHighScoresScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -732,8 +742,10 @@
 				8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */,
 				84018072183553BB00583789 /* YKSpriteViewController.m in Sources */,
 				840180761835561B00583789 /* YKTitleScene.m in Sources */,
+				1553D4F018358831005AD9EF /* YKInstructionsScene.m in Sources */,
 				84E867B618357793008D2B71 /* YKLevelEvent.m in Sources */,
 				1553D4EA1835610B005AD9EF /* YKHammyRocket.m in Sources */,
+				1553D4F318358B88005AD9EF /* YKHighScoresScene.m in Sources */,
 				840180521835537700583789 /* YKAppDelegate.m in Sources */,
 				8432EEB418355FA500684F7E /* CPSmokeEmitterNode.m in Sources */,
 				8401804E1835537700583789 /* main.m in Sources */,
