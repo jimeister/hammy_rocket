@@ -25,11 +25,11 @@
   _rocket.position = CGPointMake(CGRectGetMidX(self.frame), 100);
   [self addChild:self.rocket];
   
-  SKAction *fire = [SKAction sequence: @[
-                                          [SKAction performSelector:@selector(createAmmo) onTarget:self],
-                                          [SKAction waitForDuration:0.10 withRange:0.15]
-                                          ]];
-  [self.rocket runAction:[SKAction repeatActionForever:fire]];
+  _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
+  [self.ammo createFireAction];
+  [self addChild:self.ammo];
+  
+  [self.rocket runAction:[SKAction repeatActionForever:self.ammo.fire]];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -41,8 +41,20 @@
 - (void)update:(NSTimeInterval)currentTime {
   NSTimeInterval diff = currentTime - _lastUpdateTime;
   
-  [self enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *node, BOOL *stop) {
-    // Update ammo position here
+  // Update ammo position here
+  [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *node, BOOL *stop) {
+    if (CGPointEqualToPoint(node.position, CGPointMake(0, 0))) {
+      node.position = CGPointMake(_rocket.position.x, _rocket.position.y + 40);
+    }
+    else {
+      CGFloat ammoVelocity = self.ammo.ammoVelocity * diff;
+      CGPoint position = node.position;
+      node.position = CGPointMake(position.x, position.y + ammoVelocity);
+    }
+    
+    if (node.position.y > self.frame.size.height) {
+      [node removeFromParent];
+    }
   }];
   
   if (_touched) {
@@ -68,13 +80,6 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   UITouch *touch = [touches anyObject];
   _lastTouch = [touch locationInNode:self];
-}
-
-- (void)createAmmo {
-  SKSpriteNode *ammo = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(2,5)];
-  ammo.position = CGPointMake(self.rocket.position.x, self.rocket.position.y + 40);
-  ammo.name = @"ammo";
-  [self addChild:ammo];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
