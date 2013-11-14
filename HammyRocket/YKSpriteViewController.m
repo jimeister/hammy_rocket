@@ -7,6 +7,7 @@
 //
 
 #import "YKSpriteViewController.h"
+#import "YKTitleScene.h"
 
 @interface YKSpriteViewController ()
 
@@ -14,25 +15,23 @@
 
 @implementation YKSpriteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void)loadView {
+  [super loadView];
+  self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  SKView *view = (SKView *)self.view;
+  view.showsFPS = YES;
+  view.showsNodeCount = YES;
+  view.ignoresSiblingOrder = YES;
+  
+  SKScene *scene = [YKTitleScene sceneWithSize:view.bounds.size];
+  scene.scaleMode = SKSceneScaleModeAspectFill;
+  
+  [view presentScene:scene];
 }
 
 @end
