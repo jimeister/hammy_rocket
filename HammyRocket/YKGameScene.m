@@ -11,15 +11,16 @@
 
 @implementation YKGameScene {
   BOOL _contentCreated;
+  NSTimeInterval _lastUpdateTime;
+  CGPoint _lastTouch;
 }
 
 - (void)_createSceneContent {
   self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.3 alpha:1.0];
   
   _rocket = [[YKHammyRocket alloc] init];
-  [self.rocket createHammyRocketAtPosition:CGPointMake(CGRectGetMidX(self.frame), 100)];
-  
-  [self addChild:self.rocket.rocket];
+  _rocket.position = CGPointMake(CGRectGetMidX(self.frame), 100);
+  [self addChild:self.rocket];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -28,12 +29,19 @@
   }
 }
 
+- (void)update:(NSTimeInterval)currentTime {
+  NSTimeInterval diff = currentTime - _lastUpdateTime;
+  
+  
+  
+  _lastUpdateTime = currentTime;
+}
+
+#pragma mark UIResponder
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   UITouch *touch = [touches anyObject];
-  CGPoint currentTouchPoint = [touch locationInNode:self];
-  
-  SKAction *move = [SKAction moveTo:currentTouchPoint duration:0.1];
-  [self.rocket.rocket runAction:move];
+  _lastTouch = [touch locationInNode:self];
 }
 
 @end
