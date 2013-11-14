@@ -88,13 +88,16 @@
   YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];
   for (YKLevelEnemyBirth *enemyBirth in event.enemies) {
     enemyBirth.enemyNode.position = CGPointMake(enemyBirth.birthPlace.x, enemyBirth.birthPlace.y + CGRectGetMaxY(self.frame));
-    enemyBirth.enemyNode.velocity = CGVectorMake(0, -90);
     [self addChild:enemyBirth.enemyNode];
   }
   
   [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
     YKEnemyNode *enemy = (YKEnemyNode *)node;
     enemy.position = CGPointMake(enemy.position.x + enemy.velocity.dx * diff, enemy.position.y + enemy.velocity.dy * diff);
+    
+    if (enemy.position.y < CGRectGetMidY(self.frame)) {
+      [(YKAirplaneNode *)enemy turnRightDown];
+    }
     
     if (enemy.position.y < -50) {
       [enemy removeFromParent];

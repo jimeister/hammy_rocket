@@ -26,6 +26,8 @@
     _style = style;
     _images = [[[self class] planeImages] objectAtIndex:_style];
     _bodyNode = self.bodyNode;
+    self.velocity = CGVectorMake(0, -90);
+
   }
   return self;
 }
@@ -54,6 +56,11 @@
     [self addChild:_bodyNode];
   }
   return _bodyNode;
+}
+
+- (void)turnRightDown {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
+  self.velocity = CGVectorMake(45, -45);
 }
 
 @end
