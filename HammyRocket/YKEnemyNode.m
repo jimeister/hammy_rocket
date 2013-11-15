@@ -7,6 +7,8 @@
 //
 
 #import "YKEnemyNode.h"
+#import "YKHammyRocket.h"
+#import "CPMath.h"
 
 NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
 
@@ -18,6 +20,7 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
     _timeAlive = 0.0;
     _health = 2;
     _score = 100;
+    _ammoSpeed = 100;
   }
   return self;
 }
@@ -28,6 +31,21 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
 
 - (YKPowerUp *)powerUp {
   return nil;
+}
+
+- (void)fireAtPlayer {
+  YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
+  ammo.position = self.position;
+  ammo.zPosition = self.zPosition - 1;
+  
+  SKNode *playerNode = [self.scene childNodeWithName:YKHammyRocketNodeName];
+  if (playerNode) {
+    CGVector difference = CPCGVectorFromPoints(self.position, playerNode.position);
+    CGFloat magnitude = CPCGVectorMagnitude(difference);
+    ammo.velocity = CGVectorMake(difference.dx * _ammoSpeed / magnitude, difference.dy * _ammoSpeed / magnitude);
+  }
+  
+  [self.scene addChild:ammo];
 }
 
 - (void)update:(NSTimeInterval)diff {

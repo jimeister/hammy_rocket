@@ -9,6 +9,8 @@
 #import "YKBigPlaneNode.h"
 #import "UIImage+YKUtils.h"
 #import "CPExplosionEmitterNode.h"
+#import "CPMath.h"
+#import "YKHammyRocket.h"
 
 @interface YKBigPlaneNode ()
 
@@ -20,6 +22,9 @@
 
 @implementation YKBigPlaneNode {
   NSInteger _imageIndex;
+  CGFloat _fireTimer;
+  CGFloat _cooldown;
+  BOOL _leftFiring;
 }
 
 @synthesize bodyNode=_bodyNode;
@@ -30,9 +35,13 @@
     _bodyNode = self.bodyNode;
     
     self.baseSpeed = 50;
-    self.times = @[@(0.1), @(3), @(8)];
+    self.times = @[@(0.01), @(3), @(8)];
     self.events = @[@"moveDown", @"stop", @"moveUp"];
     self.health = 20;
+    self.ammoSpeed = 150;
+    self.score = 1500;
+    
+    _cooldown = 0.3;
   }
   return self;
 }
@@ -81,6 +90,7 @@
 
 - (void)stop {
   self.velocity = CGVectorMake(0, 0);
+  _fireTimer = _cooldown;
 }
 
 - (SKSpriteNode *)bodyNode {
@@ -93,6 +103,26 @@
   return _bodyNode;
 }
 
+- (BOOL)stopped {
+  return self.velocity.dx == 0 && self.velocity.dy == 0;
+}
+
+- (void)fireAtPlayer {
+  YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
+  ammo.position = CGPointMake(self.position.x + (_leftFiring ? -30 : 30), self.position.y - 20);
+  _leftFiring = !_leftFiring;
+  ammo.zPosition = self.zPosition - 1;
+  
+  SKNode *playerNode = [self.scene childNodeWithName:YKHammyRocketNodeName];
+  if (playerNode) {
+    CGVector difference = CPCGVectorFromPoints(ammo.position, playerNode.position);
+    CGFloat magnitude = CPCGVectorMagnitude(difference);
+    ammo.velocity = CGVectorMake(difference.dx * self.ammoSpeed / magnitude, difference.dy * self.ammoSpeed / magnitude);
+  }
+  
+  [self.scene addChild:ammo];
+}
+
 - (void)update:(NSTimeInterval)diff {
   [super update:diff];
   
@@ -100,6 +130,14 @@
     NSString *selectorName = self.events[self.eventIndex];
     [self performSelector:NSSelectorFromString(selectorName)];
     self.eventIndex++;
+  }
+  
+  if ([self stopped]) {
+    _fireTimer -= diff;
+    if (_fireTimer < 0) {
+      _fireTimer = _cooldown;
+      [self fireAtPlayer];
+    }
   }
 }
 

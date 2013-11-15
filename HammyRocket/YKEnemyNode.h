@@ -21,6 +21,7 @@ extern NSString *const YKEnemyNodeName;
 @property (readonly, nonatomic) YKPowerUp *powerUp;
 @property (nonatomic) NSInteger score; // For killing enemy
 @property (nonatomic) CGFloat baseSpeed;
+@property (nonatomic) CGFloat ammoSpeed;
 
 // Events
 @property (strong, nonatomic) NSArray *times;
@@ -29,6 +30,8 @@ extern NSString *const YKEnemyNodeName;
 // Public for subclasses, clients shouldn't touch
 @property (nonatomic) NSTimeInterval timeAlive;
 @property (nonatomic) NSInteger eventIndex;
+
+- (void)fireAtPlayer;
 
 - (void)update:(NSTimeInterval)diff;
 

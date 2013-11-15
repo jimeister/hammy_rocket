@@ -142,21 +142,6 @@
   [self.scene addChild:ammo];
 }
 
-- (void)fireAtPlayer {
-  YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
-  ammo.position = self.position;
-  ammo.zPosition = self.zPosition - 1;
-  
-  SKNode *playerNode = [self.scene childNodeWithName:YKHammyRocketNodeName];
-  if (playerNode) {
-    CGVector difference = CPCGVectorFromPoints(self.position, playerNode.position);
-    CGFloat magnitude = CPCGVectorMagnitude(difference);
-    ammo.velocity = CGVectorMake(difference.dx * 100 / magnitude, difference.dy * 100 / magnitude);
-  }
-  
-  [self.scene addChild:ammo];
-}
-
 - (void)update:(NSTimeInterval)diff {
   [super update:diff];
 
@@ -174,8 +159,12 @@
   [self.scene addChild:explosion];
   [explosion explodeForDuration:0.4];
   
-  [self removeFromParent];
-
+  
+  SKAction *action = [SKAction sequence:@[
+                                          [SKAction waitForDuration:0.4],
+                                          [SKAction removeFromParent]
+                                          ]];
+  [self runAction:action];
 }
 
 @end
