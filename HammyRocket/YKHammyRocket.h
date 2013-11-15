@@ -7,8 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "YKPowerUp.h"
 
 @interface YKHammyRocket : SKNode
+
+- (void)applyPowerUp:(YKPowerUp *)powerUp;
 
 @property (nonatomic, strong) SKSpriteNode *rocket;
 @property (nonatomic, strong) SKSpriteNode *rocket_interior;

@@ -45,9 +45,14 @@ NSString *const YKPowerUpName = @"YKPowerUp";
       self.node.size = CGSizeMake(50, 50);
       [self addChild:self.node];
       break;
+    case YKAmmo:
     default:
       break;
   }
+}
+
+- (CGFloat)hitRadius {
+  return self.node.size.width/2;
 }
 
 @end

@@ -46,7 +46,7 @@
            @(3) : [self basicEnemyEventWithNumEnemies:3 x:30 style:0],
            @(6) : [self basicEnemyEventWithNumEnemies:6 x:80 style:3],
            @(8) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
-           @(12) : [self basicPowerUpEventWithType:YKSpeed x:200 value:200.0 andTimeToExist:15.0]
+           @(12) : [self basicPowerUpEventWithType:YKSpeed x:50 value:200.0 andTimeToExist:15.0]
            };
 }
 

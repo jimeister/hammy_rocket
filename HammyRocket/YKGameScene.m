@@ -258,6 +258,12 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     powerUp.position = CGPointMake(powerUp.position.x, powerUp.position.y - powerUpVelocity);
     [powerUp update:diff];
     
+    CGFloat distanceToHammy = CPCGPointDistance(powerUp.position, _rocket.position);
+    if (distanceToHammy < powerUp.hitRadius + _rocket.hitRadius) {
+      [self.rocket applyPowerUp:powerUp];
+      [powerUp removeFromParent];
+    }
+    
     if (powerUp.timeToExist <= 0.0) {
       [powerUp removeFromParent];
     }

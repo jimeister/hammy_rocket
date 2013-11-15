@@ -21,6 +21,7 @@ extern NSString *const YKPowerUpName;
 @property (nonatomic) YKPowerUpType type;
 @property (nonatomic) CGFloat value;
 @property (readonly, nonatomic) NSTimeInterval timeToExist;
+@property (nonatomic, readonly) CGFloat hitRadius;
 
 - (instancetype)initWithType:(YKPowerUpType)type value:(CGFloat)value andTimeToExist:(NSTimeInterval)time;
 - (void)update:(NSTimeInterval)diff;

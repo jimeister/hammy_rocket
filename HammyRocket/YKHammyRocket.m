@@ -8,10 +8,11 @@
 
 #import "YKHammyRocket.h"
 #import "CPMath.h"
-#import "YKPowerUp.h"
 #import "CPSmokeEmitterNode.h"
 
 #define MAX_HEALTH (2)
+
+static NSString *const kDefaultFont = @"Courier";
 
 @implementation YKHammyRocket
 
@@ -73,14 +74,41 @@
 - (void)applyPowerUp:(YKPowerUp *)powerUp {
   switch (powerUp.type) {
     case YKHealth:
+    {
       self.health += powerUp.value;
       if (self.health > MAX_HEALTH) {
         self.health = MAX_HEALTH;
       }
+      
+      SKLabelNode *healthLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+      healthLabel.text = @"HEALTH UP!";
+      healthLabel.fontSize = 18.0;
+      healthLabel.fontColor = [UIColor whiteColor];
+      healthLabel.position = CGPointMake(0, 32.0);
+      [self addChild:healthLabel];
+      [healthLabel runAction:[SKAction fadeAlphaTo:0.0 duration:1.0] completion:^(void) {
+        [healthLabel removeFromParent];
+      }];
+      
       break;
+    }
     case YKSpeed:
-      self.maxVelocity = powerUp.value;
+    {
+      self.maxVelocity += powerUp.value;
+      
+      SKLabelNode *velocityLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+      velocityLabel.text = @"SPEED UP!";
+      velocityLabel.fontSize = 18.0;
+      velocityLabel.fontColor = [UIColor whiteColor];
+      velocityLabel.position = CGPointMake(0, 32.0);
+      [self addChild:velocityLabel];
+      [velocityLabel runAction:[SKAction fadeAlphaTo:0.0 duration:1.0] completion:^(void) {
+        [velocityLabel removeFromParent];
+      }];
+      
       break;
+    }
+    case YKAmmo:
     default:
       break;
   }
