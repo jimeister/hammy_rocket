@@ -38,6 +38,7 @@
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   YKPowerUp *powerUp = [[YKPowerUp alloc] initWithType:YKHealth value:25.0 andTimeToExist:10.0];
   
+  return event;
 }
 
 - (NSDictionary *)_gameEvents {
