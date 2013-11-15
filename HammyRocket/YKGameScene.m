@@ -321,7 +321,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }];
   
   if (event.powerUp) {
-    CGFloat x = ((double)arc4random() / ARC4RANDOM_MAX) * (self.frame.size.width - 20) + 10;
+    CGFloat x = ((double)arc4random() / ARC4RANDOM_MAX) * (self.frame.size.width - 40) + 20;
     event.powerUp.powerUp.position = CGPointMake(x, event.powerUp.birthPlace.y + CGRectGetMaxY(self.frame));
     [self addChild:event.powerUp.powerUp];
   }
