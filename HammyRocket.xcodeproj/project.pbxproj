@@ -132,6 +132,7 @@
 		84E867D518369DDF008D2B71 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D418369DDF008D2B71 /* explosion.wav */; };
 		84E867D81836A259008D2B71 /* YKIslandBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */; };
 		84E867DA1836A4FE008D2B71 /* menu_select_15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D91836A4FE008D2B71 /* menu_select_15.wav */; };
+		84E867DD1836AE01008D2B71 /* YKCloudBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867DC1836AE01008D2B71 /* YKCloudBackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,8 @@
 		84E867D61836A259008D2B71 /* YKIslandBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKIslandBackgroundLayer.h; sourceTree = "<group>"; };
 		84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKIslandBackgroundLayer.m; sourceTree = "<group>"; };
 		84E867D91836A4FE008D2B71 /* menu_select_15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menu_select_15.wav; sourceTree = "<group>"; };
+		84E867DB1836AE01008D2B71 /* YKCloudBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCloudBackgroundLayer.h; sourceTree = "<group>"; };
+		84E867DC1836AE01008D2B71 /* YKCloudBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCloudBackgroundLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +391,8 @@
 				84E867CB1836891E008D2B71 /* YKMissile.m */,
 				84E867D61836A259008D2B71 /* YKIslandBackgroundLayer.h */,
 				84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */,
+				84E867DB1836AE01008D2B71 /* YKCloudBackgroundLayer.h */,
+				84E867DC1836AE01008D2B71 /* YKCloudBackgroundLayer.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -847,6 +852,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E867C718360C9F008D2B71 /* YKSubmarineNode.m in Sources */,
+				84E867DD1836AE01008D2B71 /* YKCloudBackgroundLayer.m in Sources */,
 				84E867BF1835DAD6008D2B71 /* YKEnemyEventFactory.m in Sources */,
 				8432EEB118355FA500684F7E /* CPMath.m in Sources */,
 				8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */,

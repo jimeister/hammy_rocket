@@ -17,6 +17,7 @@
 #import "YKTitleScene.h"
 #import "YKGameOverScene.h"
 #import "YKMissile.h"
+#import "YKCloudBackgroundLayer.h"
 #import "YKIslandBackgroundLayer.h"
 
 #define ARC4RANDOM_MAX 0x100000000
@@ -25,10 +26,14 @@
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kScoreNodeName = @"kScoreNodeName";
 
+static const CGFloat kOffsetToFinger = 100;
+
 @interface YKGameScene ()
 @property (strong, nonatomic) YKLevelScheduler *scheduler;
 @property (strong, nonatomic) SKNode *scoreLayer;
 @property (strong, nonatomic) YKIslandBackgroundLayer *islandBackground;
+@property (strong, nonatomic) YKCloudBackgroundLayer *cloudBackground;
+
 @end
 
 @implementation YKGameScene {
@@ -94,6 +99,9 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   _islandBackground = [[YKIslandBackgroundLayer alloc] init];
   [self addChild:_islandBackground];
   
+  _cloudBackground = [[YKCloudBackgroundLayer alloc] init];
+  [self addChild:_cloudBackground];
+  
   [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"kirchoffs_law.wav" waitForCompletion:YES]]];
 }
 
@@ -108,7 +116,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   if (_touched) {
     CGFloat rocketVelocity = _rocket.maxVelocity * diff;
     CGPoint rocketPosition = _rocket.position;
-    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y + 50 - rocketPosition.y);
+    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y + kOffsetToFinger - rocketPosition.y);
     CGFloat scale = MIN(rocketVelocity / CPCGVectorMagnitude(direction), 1.0);
     CGVector velocity = CGVectorMake(direction.dx * scale, direction.dy * scale);
     _rocket.position = CGPointMake(rocketPosition.x + velocity.dx, rocketPosition.y + velocity.dy);
@@ -348,6 +356,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     }
   }];
   
+  [_cloudBackground update:diff];
   [_islandBackground update:diff];
   
   _lastUpdateTime = currentTime;
