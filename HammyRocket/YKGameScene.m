@@ -48,6 +48,8 @@ static const CGFloat kOffsetToFinger = 100;
   BOOL _missilesEnabled;
   CGFloat _missileCooldown;
   CGFloat _missileTimer;
+  
+  BOOL _ignoreUpdate;  // Ignores 1 round of update and then continues normally
 }
 
 @synthesize scheduler=_scheduler;
@@ -55,6 +57,7 @@ static const CGFloat kOffsetToFinger = 100;
 - (instancetype)initWithSize:(CGSize)size {
   if ((self = [super initWithSize:size])) {
     _missileCooldown = 1.0;
+    _ignoreUpdate = YES;
   }
   return self;
 }
@@ -274,7 +277,11 @@ static const CGFloat kOffsetToFinger = 100;
 
 - (void)update:(NSTimeInterval)currentTime {
   NSTimeInterval diff = currentTime - _lastUpdateTime;
-  if (diff > 1.0) return;
+  if (_ignoreUpdate) {
+    _lastUpdateTime = currentTime;
+    _ignoreUpdate = NO;
+    return;
+  }
   
   [self _handlePlayerMoveWithDiff:diff];
   if (_touched && _canFire) {
@@ -368,8 +375,8 @@ static const CGFloat kOffsetToFinger = 100;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   if ([touches count] == 3) {
     self.view.paused = YES;
-  }
-  else {
+    _ignoreUpdate = YES;
+  } else {
     self.view.paused = NO;
     _touched = YES;
     _canFire = YES;
