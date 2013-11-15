@@ -10,6 +10,10 @@
 
 NSString *const YKPowerUpName = @"YKPowerUp";
 
+@interface YKPowerUp ()
+@property (nonatomic, strong) SKSpriteNode *node;
+@end
+
 @implementation YKPowerUp
 
 - (instancetype)initWithType:(YKPowerUpType)type value:(CGFloat)value andTimeToExist:(NSTimeInterval)time {
@@ -18,12 +22,30 @@ NSString *const YKPowerUpName = @"YKPowerUp";
     _value = value;
     _timeToExist = time;
     self.name = YKPowerUpName;
+    [self _createPowerUp:type];
   }
   return self;
 }
 
 - (void)update:(NSTimeInterval)diff {
   _timeToExist -= diff;
+}
+
+- (void)_createPowerUp:(YKPowerUpType)type {
+  switch (type) {
+    case YKHealth:
+      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"contribute_review_1star.png"];
+      self.node.position = CGPointMake(0, 0);
+      [self addChild:self.node];
+      break;
+    case YKSpeed:
+      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"contribute_review_5star.png"];
+      self.node.position = CGPointMake(0, 0);
+      [self addChild:self.node];
+      break;
+    default:
+      break;
+  }
 }
 
 @end

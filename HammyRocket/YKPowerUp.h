@@ -14,6 +14,8 @@ typedef enum {
   YKSpeed
 } YKPowerUpType;
 
+extern NSString *const YKPowerUpName;
+
 @interface YKPowerUp : SKNode
 
 @property (nonatomic) YKPowerUpType type;

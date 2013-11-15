@@ -25,6 +25,22 @@
 
 @end
 
+@implementation YKLevelPowerUpBirth
+
+- (instancetype)initWithPowerUp:(YKPowerUp *)powerUp birthPlace:(CGPoint)birthPlace {
+  if ((self = [super init])) {
+    _powerUp = powerUp;
+    _birthPlace = birthPlace;
+  }
+  return self;
+}
+
++ (YKLevelPowerUpBirth *)powerUpBirthWithNode:(YKPowerUp *)powerUp birthPlace:(CGPoint)birthPlace {
+  return [[YKLevelPowerUpBirth alloc] initWithPowerUp:powerUp birthPlace:birthPlace];
+}
+
+@end
+
 @implementation YKLevelEvent
 
 

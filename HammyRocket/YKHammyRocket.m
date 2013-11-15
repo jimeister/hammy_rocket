@@ -53,6 +53,7 @@
       break;
     case YKSpeed:
       self.maxVelocity = powerUp.value;
+      break;
     default:
       break;
   }

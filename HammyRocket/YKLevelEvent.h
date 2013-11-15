@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YKEnemyNode.h"
+#import "YKPowerUp.h"
 
 @interface YKLevelEnemyBirth : NSObject
 
@@ -18,9 +19,18 @@
 
 @end
 
+@interface YKLevelPowerUpBirth : NSObject
+
+@property (strong, nonatomic) YKPowerUp *powerUp;
+@property (nonatomic) CGPoint birthPlace;
+
++ (YKLevelPowerUpBirth *)powerUpBirthWithNode:(YKPowerUp *)powerUp birthPlace:(CGPoint)birthPlace;
+
+@end
+
 @interface YKLevelEvent : NSObject
 
 @property (strong, nonatomic) NSArray *enemies;
-@property (strong, nonatomic) NSArray *powerUps;
+@property (strong, nonatomic) YKLevelPowerUpBirth *powerUp;
 
 @end

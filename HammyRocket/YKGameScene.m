@@ -161,6 +161,21 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     }
   }];
   
+  if (event.powerUp) {
+    event.powerUp.powerUp.position = CGPointMake(event.powerUp.birthPlace.x, event.powerUp.birthPlace.y + CGRectGetMaxY(self.frame));
+    [self addChild:event.powerUp.powerUp];
+  }
+  
+  [self enumerateChildNodesWithName:YKPowerUpName usingBlock:^(SKNode *node, BOOL *stop) {
+    YKPowerUp *powerUp = (YKPowerUp *)node;
+    CGFloat powerUpVelocity = 80.0 * diff;
+    powerUp.position = CGPointMake(powerUp.position.x, powerUp.position.y - powerUpVelocity);
+    [powerUp update:diff];
+    
+    if (powerUp.timeToExist <= 0.0) {
+      [powerUp removeFromParent];
+    }
+  }];
   
   _lastUpdateTime = currentTime;
 }

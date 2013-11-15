@@ -34,10 +34,10 @@
   return event;
 }
 
-- (YKLevelEvent *)basicPowerUpEvent {
+- (YKLevelEvent *)basicPowerUpEventWithType:(YKPowerUpType)type x:(CGFloat)x value:(CGFloat)value andTimeToExist:(NSTimeInterval)time {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
-  YKPowerUp *powerUp = [[YKPowerUp alloc] initWithType:YKHealth value:25.0 andTimeToExist:10.0];
-  
+  YKPowerUp *powerUp = [[YKPowerUp alloc] initWithType:type value:value andTimeToExist:time];
+  event.powerUp = [YKLevelPowerUpBirth powerUpBirthWithNode:powerUp birthPlace:CGPointMake(x, 20)];
   return event;
 }
 
@@ -45,6 +45,8 @@
   return @{
            @(3) : [self basicEnemyEventWithNumEnemies:3 x:30 style:0],
            @(6) : [self basicEnemyEventWithNumEnemies:6 x:80 style:3],
+           @(8) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
+           @(12) : [self basicPowerUpEventWithType:YKSpeed x:200 value:200.0 andTimeToExist:15.0]
            };
 }
 
@@ -58,7 +60,7 @@
     _startTime = currentTime;
   }
   
-  NSInteger realTime = (NSInteger)(currentTime - _startTime) % 10;
+  NSInteger realTime = (NSInteger)(currentTime - _startTime) % 20;
   if (realTime == 0) {
     [self _resetEvents];
   }
