@@ -34,13 +34,15 @@ NSString *const YKPowerUpName = @"YKPowerUp";
 - (void)_createPowerUp:(YKPowerUpType)type {
   switch (type) {
     case YKHealth:
-      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"contribute_review_1star.png"];
+      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"contribute_review_5star.png"];
       self.node.position = CGPointMake(0, 0);
+      self.node.size = CGSizeMake(40, 40);
       [self addChild:self.node];
       break;
     case YKSpeed:
-      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"contribute_review_5star.png"];
+      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"check_burst.png"];
       self.node.position = CGPointMake(0, 0);
+      self.node.size = CGSizeMake(50, 50);
       [self addChild:self.node];
       break;
     default:
