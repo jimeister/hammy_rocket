@@ -34,6 +34,7 @@
 - (NSDictionary *)_gameEvents {
   return @{
            @(1) : [YKEnemyEventFactory halfCircleCounterClockwiseEventWithNumEnemies:4 delay:0.8 position:CGPointMake(-20, -50) style:2 firingTimes:@[@(3)] firingActions:@[@"fireAtPlayer"] baseSpeed:180],
+           @(2) : [YKEnemyEventFactory shallowLeftVEventWithNumEnemies:5 delay:0.8 position:CGPointMake(CGRectGetWidth([[UIScreen mainScreen] bounds]) + 20, -70) style:0 baseSpeed:150],
            @(4) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(-20, -100) style:4 directionAction:@"turnShallowRightDown" firingTimes:@[@(1), @(3)] firingActions:@[@"fireDown", @"fireDown"] baseSpeed:180],
            @(5) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(CGRectGetWidth([[UIScreen mainScreen] bounds]) + 20, -100) style:4 directionAction:@"turnShallowLeftDown" firingTimes:@[@(1), @(3)] firingActions:@[@"fireDown", @"fireDown"] baseSpeed:180],
            @(6) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(500, 20) style:4 directionAction:@"turnDown" firingTimes:@[@(1), @(2)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer"] baseSpeed:130],

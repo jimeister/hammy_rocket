@@ -119,6 +119,11 @@
   self.velocity = CGVectorMake(-self.baseSpeed, -self.baseSpeed/2);
 }
 
+- (void)turnShallowLeftUp {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[5]];
+  self.velocity = CGVectorMake(-self.baseSpeed, self.baseSpeed/2);
+}
+
 - (void)turnShallowRightDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
   self.velocity = CGVectorMake(self.baseSpeed, -self.baseSpeed/2);

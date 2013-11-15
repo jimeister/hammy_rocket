@@ -86,4 +86,27 @@
   return event;
 }
 
++ (YKLevelEvent *)shallowLeftVEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
+                                        baseSpeed:(CGFloat)baseSpeed {
+  YKLevelEvent *event = [[YKLevelEvent alloc] init];
+  NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
+  NSMutableArray *baseTimes = [@[@(0.1), @(3), @(3.1)] mutableCopy];
+  NSMutableArray *baseEvents = [@[@"turnShallowLeftDown", @"fireAtPlayer", @"turnShallowLeftUp"] mutableCopy];
+
+  for (NSUInteger i = 0; i < numEnemies; ++i) {
+    YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
+    NSMutableArray *times = [baseTimes mutableCopy];
+    for (NSInteger j = 0; j < times.count; ++j) {
+      NSNumber *time = times[j];
+      times[j] = @([time floatValue] + delay * i);
+    }
+    enemy.events = baseEvents;
+    enemy.times = times;
+    enemy.baseSpeed = baseSpeed;
+    [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:position]];
+  }
+  event.enemies = enemies;
+  return event;
+}
+
 @end

@@ -24,5 +24,7 @@
                                                     firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
                                                       baseSpeed:(CGFloat)baseSpeed;
 
++ (YKLevelEvent *)shallowLeftVEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
+                                        baseSpeed:(CGFloat)baseSpeed;
 
 @end
