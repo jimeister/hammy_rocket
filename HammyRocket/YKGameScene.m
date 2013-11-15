@@ -89,7 +89,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - 30, CGRectGetMaxY(self.frame) - 30);
   [_scoreLayer addChild:scoreLabel];
   
-  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"GStippyG150.wav" waitForCompletion:YES]]];
+  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"kirchoffs_law.wav" waitForCompletion:YES]]];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -276,7 +276,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }
   
   // Missiles
-  if (_touched) {
+  if (_missilesEnabled && _touched) {
     _missileTimer -= diff;
     if (_missileTimer < 0) {
       _missileTimer = _missileCooldown;

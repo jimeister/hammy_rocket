@@ -163,6 +163,8 @@ static const CGFloat kDieDuration = 0.5;
     smokeEmitter.emissionAngle = CPDegreesToRadian(70);
     [self addChild:smokeEmitter];
     self.smokeEmitter = smokeEmitter;
+    
+    [self runAction:[SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO]];
   }
 }
 
@@ -185,6 +187,7 @@ static const CGFloat kDieDuration = 0.5;
 }
 
 - (void)die {
+  _firing = NO;
   self.smokeEmitter.particleBirthRate = 0;
   
   CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
@@ -221,10 +224,13 @@ static const CGFloat kDieDuration = 0.5;
   });
   
   SKAction *sequence = [SKAction sequence:@[
+                                            [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO],
                                             [SKAction waitForDuration:kDieDuration],
                                             [SKAction setTexture:[SKTexture textureWithImage:self.images[5]]],
+                                            [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO],
                                             [SKAction waitForDuration:kDieDuration],
                                             [SKAction setTexture:[SKTexture textureWithImage:self.images[4]]],
+                                            [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO],
                                             [SKAction waitForDuration:kDieDuration],
                                             [SKAction setTexture:[SKTexture textureWithImage:self.images[3]]],
                                             [SKAction waitForDuration:kDieDuration],
