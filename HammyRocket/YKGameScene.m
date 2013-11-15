@@ -13,6 +13,7 @@
 #import "YKEnemyNode.h"
 #import "CPExplosionEmitterNode.h"
 #import "CPSimpleSpriteFactory.h"
+#import "YKEnemyAmmo.h"
 
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kScoreNodeName = @"kScoreNodeName";
@@ -83,18 +84,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }
 }
 
-- (void)update:(NSTimeInterval)currentTime {
-  NSTimeInterval diff = currentTime - _lastUpdateTime;
-  
-  [self _handlePlayerMoveWithDiff:diff];
-  if (_touched && _canFire) {
-    _canFire = NO;
-    [self.rocket runAction:self.ammo.fire completion:^() {
-      _canFire = YES;
-    }];
-  }
-  
-  // Update ammo position here
+- (void)_updateAmmoPositionsWithDiff:(NSTimeInterval)diff {
   [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *ammoNode, BOOL *stop) {
     if (CGPointEqualToPoint(ammoNode.position, CGPointMake(0, 0))) {
       ammoNode.position = CGPointMake(_rocket.position.x, _rocket.position.y + 40);
@@ -117,7 +107,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
         smallHit.particleSize = CGSizeMake(20.0, 20.0);
         smallHit.zPosition = node.zPosition + 1;
         smallHit.position = ammoNode.position;
-        smallHit.particleLifetime = 
+        smallHit.particleLifetime =
         smallHit.yAcceleration = 10.0;
         smallHit.particleLifetime = 1.0;
         [smallHit advanceSimulationTime:0.5];
@@ -142,6 +132,27 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
         }
       }
     }];
+  }];
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+  NSTimeInterval diff = currentTime - _lastUpdateTime;
+  
+  [self _handlePlayerMoveWithDiff:diff];
+  if (_touched && _canFire) {
+    _canFire = NO;
+    [self.rocket runAction:self.ammo.fire completion:^() {
+      _canFire = YES;
+    }];
+  }
+  
+  // Update ammo position here
+  [self _updateAmmoPositionsWithDiff:diff];
+  
+  // Enemy ammo position
+  [self enumerateChildNodesWithName:YKEnemyAmmoName usingBlock:^(SKNode *node, BOOL *stop) {
+    YKEnemyAmmo *ammo = (YKEnemyAmmo *)node;
+    ammo.position = CGPointMake(ammo.position.x + ammo.velocity.dx * diff, ammo.position.y + ammo.velocity.dy * diff);
   }];
 
   YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];

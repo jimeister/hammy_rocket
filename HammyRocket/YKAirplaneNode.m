@@ -8,6 +8,7 @@
 
 #import "YKAirplaneNode.h"
 #import "UIImage+YKUtils.h"
+#import "YKEnemyAmmo.h"
 
 @interface YKAirplaneNode ()
 
@@ -77,16 +78,25 @@
   self.velocity = CGVectorMake(45, 45);
 }
 
+- (void)fireDown {
+  YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
+  ammo.position = self.position;
+  ammo.zPosition = self.zPosition - 1;
+  ammo.velocity = CGVectorMake(0, -70);
+  [self.scene addChild:ammo];
+}
+
 - (void)update:(NSTimeInterval)diff {
   [super update:diff];
   static NSArray *times = nil;
   static NSDictionary *events = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    times = @[@(2), @(5), @(7)];
+    times = @[@(2), @(5), @(6), @(7)];
     events = @{
                @(2) : @"turnRightDown",
                @(5) : @"turnRight",
+               @(6) : @"fireDown",
                @(7) : @"turnRightUp"
                };
   });

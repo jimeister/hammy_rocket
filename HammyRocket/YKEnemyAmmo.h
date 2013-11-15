@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface YKEnemyAmmo : SKNode
+extern NSString *const YKEnemyAmmoName;
+
+@interface YKEnemyAmmo : SKSpriteNode
+
+@property (nonatomic) CGVector velocity;
 
 @end
