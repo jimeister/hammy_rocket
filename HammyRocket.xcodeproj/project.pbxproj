@@ -37,6 +37,7 @@
 		1553D4FB18359480005AD9EF /* check_burst@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4F918359480005AD9EF /* check_burst@2x.png */; };
 		1553D4FE18359BFF005AD9EF /* YKPowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4FD18359BFF005AD9EF /* YKPowerUp.m */; };
 		1553D5011835C6EF005AD9EF /* YKLivesNodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5001835C6EF005AD9EF /* YKLivesNodes.m */; };
+		1553D5041835D64E005AD9EF /* YKGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5031835D64E005AD9EF /* YKGameOverScene.m */; };
 		840180421835537700583789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180411835537700583789 /* Foundation.framework */; };
 		840180441835537700583789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180431835537700583789 /* CoreGraphics.framework */; };
 		840180461835537700583789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180451835537700583789 /* UIKit.framework */; };
@@ -163,6 +164,8 @@
 		1553D4FD18359BFF005AD9EF /* YKPowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKPowerUp.m; sourceTree = "<group>"; };
 		1553D4FF1835C6EF005AD9EF /* YKLivesNodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLivesNodes.h; sourceTree = "<group>"; };
 		1553D5001835C6EF005AD9EF /* YKLivesNodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLivesNodes.m; sourceTree = "<group>"; };
+		1553D5021835D64E005AD9EF /* YKGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGameOverScene.h; sourceTree = "<group>"; };
+		1553D5031835D64E005AD9EF /* YKGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGameOverScene.m; sourceTree = "<group>"; };
 		8401803E1835537700583789 /* HammyRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammyRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840180411835537700583789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		840180431835537700583789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -427,6 +430,8 @@
 				1553D4EF18358831005AD9EF /* YKInstructionsScene.m */,
 				1553D4F118358B88005AD9EF /* YKHighScoresScene.h */,
 				1553D4F218358B88005AD9EF /* YKHighScoresScene.m */,
+				1553D5021835D64E005AD9EF /* YKGameOverScene.h */,
+				1553D5031835D64E005AD9EF /* YKGameOverScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				1553D4FE18359BFF005AD9EF /* YKPowerUp.m in Sources */,
 				8401804E1835537700583789 /* main.m in Sources */,
 				84E867B918357F82008D2B71 /* YKEnemyNode.m in Sources */,
+				1553D5041835D64E005AD9EF /* YKGameOverScene.m in Sources */,
 				8432EEBB1835629200684F7E /* UIImage+YKUtils.m in Sources */,
 				84E867B318357743008D2B71 /* YKLevelScheduler.m in Sources */,
 				8432EEB018355FA500684F7E /* CPExplosionEmitterNode.m in Sources */,

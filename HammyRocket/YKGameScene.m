@@ -14,8 +14,11 @@
 #import "CPExplosionEmitterNode.h"
 #import "CPSimpleSpriteFactory.h"
 #import "YKEnemyAmmo.h"
+#import "YKTitleScene.h"
+#import "YKGameOverScene.h"
 
 #define ARC4RANDOM_MAX 0x100000000
+#define MAX_LIVES (3)
 
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kScoreNodeName = @"kScoreNodeName";
@@ -53,6 +56,11 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   _rocket.zPosition = -5;
   [self addChild:self.rocket];
   
+  _lives = [[YKLivesNodes alloc] initWithMaxLives:MAX_LIVES];
+  _lives.position = CGPointMake(CGRectGetMinX(self.frame) + 30, CGRectGetMaxY(self.frame) - 25);
+  _lives.zPosition = 10;
+  [self addChild:self.lives];
+  
   _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
   [self.ammo createFireAction];
   [self addChild:self.ammo];
@@ -73,6 +81,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
 - (void)didMoveToView:(SKView *)view {
   if (!_contentCreated) {
     [self _createSceneContent];
+    _contentCreated = YES;
   }
 }
   
@@ -156,6 +165,10 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }];
 }
 
+- (void)_showGameOver {
+  [self.view presentScene:[YKGameOverScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
+}
+
 - (void)update:(NSTimeInterval)currentTime {
   NSTimeInterval diff = currentTime - _lastUpdateTime;
   
@@ -189,6 +202,29 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
         [explosion explodeForDuration:1.0];
         
         [_rocket removeFromParent];
+        if (self.lives.numLives > 0) {
+          [[self.lives.children lastObject] removeFromParent];
+          [self.lives decrementLife];
+        }
+        
+        if (self.lives.numLives > 0) {
+          // Respawn
+          _touched = NO;
+          _canFire = NO;
+          _lastTouch = CGPointZero;
+          _rocket = [[YKHammyRocket alloc] init];
+          _rocket.position = CGPointMake(CGRectGetMidX(self.frame), -20);
+          _rocket.zPosition = -5;
+          self.userInteractionEnabled = NO;
+          [self addChild:self.rocket];
+          SKAction *moveFromBottom = [SKAction moveTo:CGPointMake(CGRectGetMidX(self.frame), 100) duration:1.0];
+          [self.rocket runAction:moveFromBottom completion:^(void) {
+            self.userInteractionEnabled = YES;
+          }];
+        }
+        else {
+          [self _showGameOver];
+        }
       }
     }
   }];

@@ -10,6 +10,9 @@
 
 @interface YKLivesNodes : SKNode
 
-@property (readonly, nonatomic) NSInteger lives;
+- (instancetype)initWithMaxLives:(NSInteger)lives;
+- (void)decrementLife;
+
+@property (readonly, nonatomic) NSInteger numLives;
 
 @end
