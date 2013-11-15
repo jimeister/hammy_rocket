@@ -15,11 +15,16 @@
 @implementation YKEnemyEventFactory
 
 // Enemies fly down shoot, and then leave
-+ (YKLevelEvent *)basicEnemyEventWithNumEnemies:(NSUInteger)numEnemies x:(CGFloat)x style:(NSInteger)style {
++ (YKLevelEvent *)basicEnemyEventWithNumEnemies:(NSUInteger)numEnemies x:(CGFloat)x style:(NSInteger)style timeToFlyDown:(CGFloat)time {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
   for (NSUInteger i = 0; i < numEnemies; ++i) {
     YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
+    NSMutableArray *times = [NSMutableArray arrayWithCapacity:enemy.times.count];
+    for (NSNumber *num in enemy.times) {
+      [times addObject:@([num floatValue] + time)];
+    }
+    enemy.times = times;
     [enemy turnDown];
     [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:CGPointMake(x + 70*i, 20)]];
   }
@@ -30,7 +35,7 @@
 // Travel in a straight line, you pass in how they shoot
 + (YKLevelEvent *)lineEnemyEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
                                directionAction:(NSString *)directionAction firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
-                                     baseSpeed:(CGFloat)baseSpeed {
+                                     baseSpeed:(CGFloat)baseSpeed ammoSpeed:(CGFloat)ammoSpeed {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
   NSArray *baseTimes = @[@(0.1)];
@@ -49,10 +54,18 @@
     enemy.events = baseEvents;
     enemy.times = times;
     enemy.baseSpeed = baseSpeed;
+    enemy.ammoSpeed = ammoSpeed;
+    enemy.score = 150;
     [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:position]];
   }
   event.enemies = enemies;
   return event;
+}
+
++ (YKLevelEvent *)lineEnemyEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
+                               directionAction:(NSString *)directionAction firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
+                                     baseSpeed:(CGFloat)baseSpeed {
+  return [[self class] lineEnemyEventWithNumEnemies:numEnemies delay:delay position:position style:style directionAction:directionAction firingTimes:firingTimes firingActions:firingActions baseSpeed:baseSpeed ammoSpeed:100];
 }
 
 + (YKLevelEvent *)halfCircleCounterClockwiseEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
@@ -89,7 +102,7 @@
 }
 
 + (YKLevelEvent *)shallowLeftVEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
-                                        baseSpeed:(CGFloat)baseSpeed {
+                                        baseSpeed:(CGFloat)baseSpeed ammoSpeed:(CGFloat)ammoSpeed {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
   NSMutableArray *baseTimes = [@[@(0.1), @(3), @(3.1)] mutableCopy];
@@ -105,10 +118,16 @@
     enemy.events = baseEvents;
     enemy.times = times;
     enemy.baseSpeed = baseSpeed;
+    enemy.ammoSpeed = ammoSpeed;
     [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:position]];
   }
   event.enemies = enemies;
   return event;
+}
+
++ (YKLevelEvent *)shallowLeftVEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
+                                        baseSpeed:(CGFloat)baseSpeed {
+  return [[self class] shallowLeftVEventWithNumEnemies:numEnemies delay:delay position:position style:style baseSpeed:baseSpeed ammoSpeed:100];
 }
 
 + (YKLevelEvent *)bigEnemyPlaneEventAtX:(CGFloat)x {

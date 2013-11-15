@@ -132,7 +132,7 @@
     self.eventIndex++;
   }
   
-  if ([self stopped]) {
+  if ([self stopped] && !self.dead) {
     _fireTimer -= diff;
     if (_fireTimer < 0) {
       _fireTimer = _cooldown;

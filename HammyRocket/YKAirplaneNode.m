@@ -138,7 +138,7 @@
   YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
   ammo.position = self.position;
   ammo.zPosition = self.zPosition - 1;
-  ammo.velocity = CGVectorMake(0, -100);
+  ammo.velocity = CGVectorMake(0, -self.ammoSpeed);
   [self.scene addChild:ammo];
 }
 
