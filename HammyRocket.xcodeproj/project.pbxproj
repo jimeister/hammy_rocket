@@ -43,6 +43,7 @@
 		1553D4FE18359BFF005AD9EF /* YKPowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D4FD18359BFF005AD9EF /* YKPowerUp.m */; };
 		1553D5011835C6EF005AD9EF /* YKLivesNodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5001835C6EF005AD9EF /* YKLivesNodes.m */; };
 		1553D5041835D64E005AD9EF /* YKGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5031835D64E005AD9EF /* YKGameOverScene.m */; };
+		1589BC9A1836C2CE00000128 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1589BC991836C2CE00000128 /* AVFoundation.framework */; };
 		840180421835537700583789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180411835537700583789 /* Foundation.framework */; };
 		840180441835537700583789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180431835537700583789 /* CoreGraphics.framework */; };
 		840180461835537700583789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180451835537700583789 /* UIKit.framework */; };
@@ -189,6 +190,7 @@
 		1553D5001835C6EF005AD9EF /* YKLivesNodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLivesNodes.m; sourceTree = "<group>"; };
 		1553D5021835D64E005AD9EF /* YKGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGameOverScene.h; sourceTree = "<group>"; };
 		1553D5031835D64E005AD9EF /* YKGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGameOverScene.m; sourceTree = "<group>"; };
+		1589BC991836C2CE00000128 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8401803E1835537700583789 /* HammyRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammyRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840180411835537700583789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		840180431835537700583789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -310,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1589BC9A1836C2CE00000128 /* AVFoundation.framework in Frameworks */,
 				840180441835537700583789 /* CoreGraphics.framework in Frameworks */,
 				840180461835537700583789 /* UIKit.framework in Frameworks */,
 				840180421835537700583789 /* Foundation.framework in Frameworks */,
@@ -421,6 +424,7 @@
 		840180401835537700583789 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1589BC991836C2CE00000128 /* AVFoundation.framework */,
 				840180411835537700583789 /* Foundation.framework */,
 				840180431835537700583789 /* CoreGraphics.framework */,
 				840180451835537700583789 /* UIKit.framework */,

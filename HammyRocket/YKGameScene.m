@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 HammyRocket. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "YKGameScene.h"
 #import "YKAirplaneNode.h"
 #import "CPMath.h"
@@ -50,6 +51,7 @@ static const CGFloat kOffsetToFinger = 100;
   CGFloat _missileTimer;
   
   BOOL _ignoreUpdate;  // Ignores 1 round of update and then continues normally
+  AVAudioPlayer *_audioPlayer;
 }
 
 @synthesize scheduler=_scheduler;
@@ -105,7 +107,16 @@ static const CGFloat kOffsetToFinger = 100;
   _cloudBackground = [[YKCloudBackgroundLayer alloc] init];
   [self addChild:_cloudBackground];
   
-  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"GStippyG150.wav" waitForCompletion:YES]]];
+  NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"kirchoffs_law" ofType:@"wav"]];
+  NSError *error = nil;
+  _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+  if (error) {
+    NSLog(@"Error in audio player: %@", [error localizedDescription]);
+  }
+  else {
+    [_audioPlayer play];
+    _audioPlayer.numberOfLoops = INT32_MAX;
+  }
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -267,6 +278,7 @@ static const CGFloat kOffsetToFinger = 100;
 
 - (void)_showGameOver {
   [self removeAllActions];
+  [_audioPlayer stop];
   YKGameOverScene *gameOverScene = [YKGameOverScene sceneWithSize:self.size];
   gameOverScene.finalScore = _score;
   [self.view presentScene:gameOverScene transition:[SKTransition fadeWithDuration:0.5]];
@@ -379,12 +391,14 @@ static const CGFloat kOffsetToFinger = 100;
   if ([touches count] == 3) {
     self.view.paused = YES;
     _ignoreUpdate = YES;
+    [_audioPlayer pause];
   } else {
     self.view.paused = NO;
     _touched = YES;
     _canFire = YES;
     UITouch *touch = [touches anyObject];
     _lastTouch = [touch locationInNode:self];
+    [_audioPlayer play];
   }
 }
 
