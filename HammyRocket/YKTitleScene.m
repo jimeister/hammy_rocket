@@ -47,13 +47,13 @@ static NSString *const kInstructions = @"kInstructions";
   instructionsLabel.position = CGPointMake(CGRectGetMidX(self.frame), 200);
   [self addChild:instructionsLabel];
   
-  SKLabelNode *highScoresLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+  /*SKLabelNode *highScoresLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
   highScoresLabel.text = @"High Scores";
   highScoresLabel.name = kHighScores;
   highScoresLabel.fontSize = 30.0;
   highScoresLabel.fontColor = [UIColor whiteColor];
   highScoresLabel.position = CGPointMake(CGRectGetMidX(self.frame), 150);
-  [self addChild:highScoresLabel];
+  [self addChild:highScoresLabel];*/
   
   SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
   titleLabel.text = @"Sky Hamster";

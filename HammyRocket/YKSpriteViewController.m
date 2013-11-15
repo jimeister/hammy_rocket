@@ -24,8 +24,6 @@
   [super viewDidLoad];
   
   SKView *view = (SKView *)self.view;
-  view.showsFPS = YES;
-  view.showsNodeCount = YES;
   view.ignoresSiblingOrder = YES;
   
   SKScene *scene = [YKTitleScene sceneWithSize:view.bounds.size];
