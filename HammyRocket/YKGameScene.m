@@ -143,6 +143,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
       [ammoNode removeFromParent];
     }
     
+    // Check for hits against enemies
     [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
       if (ammoNode.position.x > CGRectGetMinX(node.frame) && ammoNode.position.x < CGRectGetMaxX(node.frame) &&
           ammoNode.position.y > CGRectGetMinY(node.frame) && ammoNode.position.y < CGRectGetMaxY(node.frame)) {
@@ -157,12 +158,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
           SKLabelNode *scoreLabel = (SKLabelNode *)[_scoreLayer childNodeWithName:kScoreNodeName];
           scoreLabel.text = [@(_score) description];
           
-          [enemyNode removeFromParent];
-          CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
-          explosion.position = enemyNode.position;
-          [explosion advanceSimulationTime:5.0];
-          [self addChild:explosion];
-          [explosion explodeForDuration:0.4];
+          [enemyNode die];
         }
       }
     }];

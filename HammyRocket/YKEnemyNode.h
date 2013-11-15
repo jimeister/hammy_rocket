@@ -32,4 +32,6 @@ extern NSString *const YKEnemyNodeName;
 
 - (void)update:(NSTimeInterval)diff;
 
+- (void)die;
+
 @end

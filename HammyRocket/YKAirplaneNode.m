@@ -11,6 +11,7 @@
 #import "YKEnemyAmmo.h"
 #import "YKHammyRocket.h"
 #import "CPMath.h"
+#import "CPExplosionEmitterNode.h"
 
 @interface YKAirplaneNode ()
 
@@ -164,6 +165,17 @@
     [self performSelector:NSSelectorFromString(selectorName)];
     self.eventIndex++;
   }
+}
+
+- (void)die {
+  CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+  explosion.position = self.position;
+  [explosion advanceSimulationTime:5.0];
+  [self.scene addChild:explosion];
+  [explosion explodeForDuration:0.4];
+  
+  [self removeFromParent];
+
 }
 
 @end

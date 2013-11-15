@@ -34,4 +34,8 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
   _timeAlive += diff;
 }
 
+- (void)die {
+  
+}
+
 @end

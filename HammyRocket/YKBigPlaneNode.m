@@ -8,6 +8,7 @@
 
 #import "YKBigPlaneNode.h"
 #import "UIImage+YKUtils.h"
+#import "CPExplosionEmitterNode.h"
 
 @interface YKBigPlaneNode ()
 
@@ -100,6 +101,44 @@
     [self performSelector:NSSelectorFromString(selectorName)];
     self.eventIndex++;
   }
+}
+
+- (void)die {
+  [self stop];
+  
+  CGFloat timeScale = 0.8;
+  
+  CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+  explosion.position = CGPointMake(self.position.x - 20, self.position.y - 30);
+  [explosion advanceSimulationTime:5.0];
+  [self.scene addChild:explosion];
+  [explosion explodeForDuration:1.0*timeScale];
+  
+  double delayInSeconds = 1.0*timeScale;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+    explosion.position = CGPointMake(self.position.x + 30, self.position.y + 20);
+    [explosion advanceSimulationTime:5.0];
+    [self.scene addChild:explosion];
+    [explosion explodeForDuration:1.0*timeScale];
+  });
+  
+  delayInSeconds = 1.2*timeScale;
+  popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+    explosion.position = self.position;
+    [explosion advanceSimulationTime:5.0];
+    [self.scene addChild:explosion];
+    [explosion explodeForDuration:1.8*timeScale];
+  });
+  
+  SKAction *action = [SKAction sequence:@[
+                                          [SKAction waitForDuration:2.0*timeScale],
+                                          [SKAction removeFromParent]
+                                          ]];
+  [self runAction:action];
 }
 
 @end

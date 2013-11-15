@@ -12,6 +12,8 @@
 
 @property (nonatomic) CGFloat duration;
 
+- (void)setCircleTextureDiameter:(CGFloat)diameter;
+
 - (void)explodeForDuration:(NSTimeInterval)duration;
 
 @end

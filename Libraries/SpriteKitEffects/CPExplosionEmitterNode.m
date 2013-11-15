@@ -39,6 +39,11 @@ static const CGFloat kDefaultExplosionEndingDiameter = 20.0;
     return self;
 }
 
+- (void)setCircleTextureDiameter:(CGFloat)diameter {
+  self.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory circleImageWithDiameter:diameter fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
+  self.particleSize = CGSizeMake(diameter, diameter);
+}
+
 - (void)setParticleLifetime:(CGFloat)particleLifetime {
   [super setParticleLifetime:particleLifetime];
   self.particleAlphaSpeed = -self.particleAlpha / self.particleLifetime;
