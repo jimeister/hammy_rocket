@@ -48,7 +48,7 @@ static const CGFloat kDieDuration = 0.5;
     self.events = @[@"emerge", @"submerge"];
     self.health = 30;
     self.ammoSpeed = 150;
-    self.score = 2000;
+    self.score = 5000;
     
     _coolDown = 0.5;
     _fireTimer = 0.5;

@@ -23,6 +23,11 @@
                                directionAction:(NSString *)directionAction firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
                                      baseSpeed:(CGFloat)baseSpeed;
 
+// Line with synced shooting
++ (YKLevelEvent *)lineEnemySyncedShootingEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
+                                             directionAction:(NSString *)directionAction firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
+                                                   baseSpeed:(CGFloat)baseSpeed ammoSpeed:(CGFloat)ammoSpeed;
+
 + (YKLevelEvent *)halfCircleCounterClockwiseEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
                                                     firingTimes:(NSArray *)firingTimes firingActions:(NSArray *)firingActions
                                                       baseSpeed:(CGFloat)baseSpeed;
