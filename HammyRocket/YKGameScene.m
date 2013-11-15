@@ -16,6 +16,7 @@
 #import "YKEnemyAmmo.h"
 #import "YKTitleScene.h"
 #import "YKGameOverScene.h"
+#import "YKMissile.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 #define MAX_LIVES (3)
@@ -36,9 +37,20 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   BOOL _touched;
   BOOL _canFire;
   CGPoint _lastTouch;
+  
+  BOOL _missilesEnabled;
+  CGFloat _missileCooldown;
+  CGFloat _missileTimer;
 }
 
 @synthesize scheduler=_scheduler;
+
+- (instancetype)initWithSize:(CGSize)size {
+  if ((self = [super initWithSize:size])) {
+    _missileCooldown = 1.0;
+  }
+  return self;
+}
 
 - (YKLevelScheduler *)scheduler {
   if (!_scheduler) {
@@ -76,6 +88,8 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - 30, CGRectGetMaxY(self.frame) - 30);
   [_scoreLayer addChild:scoreLabel];
+  
+  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"GStippyG150.wav" waitForCompletion:YES]]];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -160,6 +174,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
             scoreLabel.text = [@(_score) description];
             
             [enemyNode die];
+            [self runAction:[SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO]];
           }
         }
       }
@@ -220,6 +235,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
             [self.lives decrementLife];
           }
           
+          [self runAction:[SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO]];
           if (self.lives.numLives > 0) {
             // Respawn
             [self _respawnPlayer];
@@ -234,7 +250,13 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
 }
 
 - (void)_showGameOver {
+  [self removeAllActions];
   [self.view presentScene:[YKGameOverScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
+}
+
+- (void)_enableMissiles {
+  _missilesEnabled = YES;
+  _missileTimer = _missileCooldown;
 }
 
 - (void)update:(NSTimeInterval)currentTime {
@@ -252,6 +274,28 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     self.ammo.upgradeAmmo = YES;
     self.rocket.enableBonusAmmo = NO;
   }
+  
+  // Missiles
+  if (_touched) {
+    _missileTimer -= diff;
+    if (_missileTimer < 0) {
+      _missileTimer = _missileCooldown;
+      YKMissile *missile = [[YKMissile alloc] init];
+      missile.position = _rocket.position;
+      missile.velocity = CGVectorMake(0, 50);
+      [self addChild:missile];
+    }
+  }
+  
+  [self enumerateChildNodesWithName:@"Missile" usingBlock:^(SKNode *node, BOOL *stop) {
+    static CGFloat missileMaxVelocity = 80;
+    YKMissile *missile = (YKMissile *)node;
+    missile.yVelocity = MIN(missile.acceleration*diff + missile.yVelocity, missileMaxVelocity);
+    missile.position = CGPointMake(missile.position.x, missile.position.y + missile.yVelocity*diff);
+    if (missile.position.y > CGRectGetMaxY(self.frame) + 50) {
+      [missile removeFromParent];
+    }
+  }];
   
   // Update ammo position here
   [self _updateAmmoPositionsWithDiff:diff];

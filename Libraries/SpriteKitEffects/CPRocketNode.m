@@ -45,6 +45,7 @@
         _exhaustNode = [[SKEmitterNode alloc] init];
         _exhaustNode.particleBirthRate = kDefaultExhaustBirthRate;
         _exhaustNode.particleLifetime = kDefaultExhaustLifetime;
+      _exhaustNode.zPosition = -1;
         [self addChild:_exhaustNode];
     }
     return _exhaustNode;
@@ -54,6 +55,10 @@
 {
     _bodyTexture = bodyTexture;
     self.bodyNode.texture = bodyTexture;
+}
+
+- (void)setBodySize:(CGSize)size {
+  self.bodyNode.size = size;
 }
 
 - (void)setExhaustParticleTexture:(SKTexture *)exhaustParticleTexture

@@ -16,6 +16,8 @@
 @property (nonatomic) CGVector velocity;
 @property (nonatomic) CGFloat exhaustEmissionAngleRange;
 
+- (void)setBodySize:(CGSize)size;
+
 /*
  @param seconds Number of seconds for action to move
  @returns An SKAction to move by the current velocity for a given time interval
