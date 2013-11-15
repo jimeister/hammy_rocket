@@ -37,3 +37,8 @@ CGFloat CPCGPointDistance(CGPoint p1, CGPoint p2)
 {
     return CPCGVectorMagnitude(CGVectorMake(p1.x - p2.x, p1.y - p2.y));
 }
+
+CGVector CPCGVectorFromPoints(CGPoint start, CGPoint end)
+{
+  return CGVectorMake(end.x - start.x, end.y - start.y);
+}

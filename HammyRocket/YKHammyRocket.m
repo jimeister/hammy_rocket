@@ -13,13 +13,15 @@
 #define MAX_HEALTH (2)
 
 static NSString *const kDefaultFont = @"Courier";
+NSString *const YKHammyRocketNodeName = @"YKHammyRocketNodeName";
 
 @implementation YKHammyRocket
 
 - (instancetype)init {
   if ((self = [super init])) {
+    self.name = YKHammyRocketNodeName;
     [self _createHammyRocketNodes];
-    _maxVelocity = 150.0;
+    _maxVelocity = 170.0;
     _health = MAX_HEALTH;
   }
   return self;
@@ -58,6 +60,7 @@ static NSString *const kDefaultFont = @"Courier";
   self.smokeEmitter.zPosition = self.zPosition + 1;
   self.smokeEmitter.particleBirthRate = 0;
   self.smokeEmitter.emissionAngle = CPDegreesToRadian(270);
+  self.smokeEmitter.targetNode = self.scene; // TODO why doesn't this work?
   [self addChild:self.smokeEmitter];
 }
 

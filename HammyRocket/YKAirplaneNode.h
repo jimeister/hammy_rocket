@@ -12,6 +12,8 @@
 
 - (instancetype)initWithStyle:(NSInteger)style;
 
+- (void)turnDown;
+
 - (void)turnRightDown;
 
 @end

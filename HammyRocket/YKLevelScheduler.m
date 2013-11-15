@@ -23,12 +23,40 @@
   return self;
 }
 
+// Enemies fly down shoot, and then leave
 - (YKLevelEvent *)basicEnemyEventWithNumEnemies:(NSUInteger)numEnemies x:(CGFloat)x style:(NSInteger)style {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
   for (NSUInteger i = 0; i < numEnemies; ++i) {
     YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
+    [enemy turnDown];
     [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:CGPointMake(x + 70*i, 20)]];
+  }
+  event.enemies = enemies;
+  return event;
+}
+
+- (YKLevelEvent *)lineEnemyEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style {
+  YKLevelEvent *event = [[YKLevelEvent alloc] init];
+  NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
+  NSArray *baseTimes = @[
+                         @(0.1),
+                         @(1)
+                         ];
+  NSArray *baseEvents = @[
+                          @"turnDown",
+                          @"fireAtPlayer"
+                          ];
+  for (NSUInteger i = 0; i < numEnemies; ++i) {
+    YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
+    NSMutableArray *times = [baseTimes mutableCopy];
+    for (NSInteger j = 0; j < times.count; ++j) {
+      NSNumber *time = times[j];
+      times[j] = @([time floatValue] + delay * i);
+    }
+    enemy.events = baseEvents;
+    enemy.times = times;
+    [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:position]];
   }
   event.enemies = enemies;
   return event;
@@ -43,7 +71,7 @@
 
 - (NSDictionary *)_gameEvents {
   return @{
-           @(3) : [self basicEnemyEventWithNumEnemies:3 x:30 style:0],
+           @(3) : [self lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(500, 20) style:4],
            @(6) : [self basicEnemyEventWithNumEnemies:6 x:80 style:3],
            @(8) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
            @(12) : [self basicPowerUpEventWithType:YKSpeed x:50 value:200.0 andTimeToExist:15.0]

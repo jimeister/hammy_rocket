@@ -9,6 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import "YKPowerUp.h"
 
+extern NSString *const YKHammyRocketNodeName;
+
 @interface YKHammyRocket : SKNode
 
 - (void)applyPowerUp:(YKPowerUp *)powerUp;

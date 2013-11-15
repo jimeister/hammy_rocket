@@ -34,3 +34,4 @@
 CGFloat CPCGVectorMagnitude(CGVector vector);
 CGFloat CPCGVectorAngleInRadians(CGVector vector);
 CGFloat CPCGPointDistance(CGPoint p1, CGPoint p2);
+CGVector CPCGVectorFromPoints(CGPoint start, CGPoint end);

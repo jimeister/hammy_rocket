@@ -9,6 +9,8 @@
 #import "YKAirplaneNode.h"
 #import "UIImage+YKUtils.h"
 #import "YKEnemyAmmo.h"
+#import "YKHammyRocket.h"
+#import "CPMath.h"
 
 @interface YKAirplaneNode ()
 
@@ -27,7 +29,7 @@
     _style = style;
     _images = [[[self class] planeImages] objectAtIndex:_style];
     _bodyNode = self.bodyNode;
-    self.velocity = CGVectorMake(0, -90);
+    self.velocity = CGVectorMake(0, 0);
     
     self.times = @[
                    @(1.1),
@@ -80,6 +82,11 @@
   return _bodyNode;
 }
 
+- (void)turnDown {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[0]];
+  self.velocity = CGVectorMake(0, -90);
+}
+
 - (void)turnRightDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
   self.velocity = CGVectorMake(45, -45);
@@ -108,7 +115,22 @@
   YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
   ammo.position = self.position;
   ammo.zPosition = self.zPosition - 1;
-  ammo.velocity = CGVectorMake(0, -70);
+  ammo.velocity = CGVectorMake(0, -100);
+  [self.scene addChild:ammo];
+}
+
+- (void)fireAtPlayer {
+  YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
+  ammo.position = self.position;
+  ammo.zPosition = self.zPosition - 1;
+  
+  SKNode *playerNode = [self.scene childNodeWithName:YKHammyRocketNodeName];
+  if (playerNode) {
+    CGVector difference = CPCGVectorFromPoints(self.position, playerNode.position);
+    CGFloat magnitude = CPCGVectorMagnitude(difference);
+    ammo.velocity = CGVectorMake(difference.dx * 100 / magnitude, difference.dy * 100 / magnitude);
+  }
+  
   [self.scene addChild:ammo];
 }
 
