@@ -47,6 +47,8 @@
                     @"turnRightUp",
                     @"turnUp"
                     ];
+    
+    self.baseSpeed = 90;
   }
   return self;
 }
@@ -84,27 +86,42 @@
 
 - (void)turnDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[0]];
-  self.velocity = CGVectorMake(0, -90);
+  self.velocity = CGVectorMake(0, -self.baseSpeed);
 }
 
 - (void)turnRightDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
-  self.velocity = CGVectorMake(45, -45);
+  self.velocity = CGVectorMake(self.baseSpeed/2, -self.baseSpeed/2);
 }
 
 - (void)turnRight {
   _bodyNode.texture = [SKTexture textureWithImage:_images[2]];
-  self.velocity = CGVectorMake(45, 0);
+  self.velocity = CGVectorMake(self.baseSpeed/2, 0);
 }
 
 - (void)turnRightUp {
   _bodyNode.texture = [SKTexture textureWithImage:_images[3]];
-  self.velocity = CGVectorMake(45, 45);
+  self.velocity = CGVectorMake(self.baseSpeed/2, self.baseSpeed/2);
 }
 
 - (void)turnUp {
   _bodyNode.texture = [SKTexture textureWithImage:_images[4]];
-  self.velocity = CGVectorMake(0, 45);
+  self.velocity = CGVectorMake(0, self.baseSpeed/2);
+}
+
+- (void)turnLeftDown {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[7]];
+  self.velocity = CGVectorMake(-self.baseSpeed/2, -self.baseSpeed/2);
+}
+
+- (void)turnShallowLeftDown {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[7]];
+  self.velocity = CGVectorMake(-self.baseSpeed, -self.baseSpeed/2);
+}
+
+- (void)turnShallowRightDown {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[1]];
+  self.velocity = CGVectorMake(self.baseSpeed, -self.baseSpeed/2);
 }
 
 - (void)stop {

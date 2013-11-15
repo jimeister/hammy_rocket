@@ -10,6 +10,8 @@
 
 @interface YKAirplaneNode : YKEnemyNode
 
+@property (nonatomic) CGFloat baseSpeed;
+
 - (instancetype)initWithStyle:(NSInteger)style;
 
 - (void)turnDown;
