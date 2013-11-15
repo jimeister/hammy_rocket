@@ -34,4 +34,8 @@
   [view presentScene:scene];
 }
 
+- (BOOL)prefersStatusBarHidden {
+  return YES;
+}
+
 @end
