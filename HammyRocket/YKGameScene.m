@@ -108,7 +108,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   if (_touched) {
     CGFloat rocketVelocity = _rocket.maxVelocity * diff;
     CGPoint rocketPosition = _rocket.position;
-    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y - rocketPosition.y);
+    CGVector direction = CGVectorMake(_lastTouch.x - rocketPosition.x, _lastTouch.y + 50 - rocketPosition.y);
     CGFloat scale = MIN(rocketVelocity / CPCGVectorMagnitude(direction), 1.0);
     CGVector velocity = CGVectorMake(direction.dx * scale, direction.dy * scale);
     _rocket.position = CGPointMake(rocketPosition.x + velocity.dx, rocketPosition.y + velocity.dy);
