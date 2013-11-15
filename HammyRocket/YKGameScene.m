@@ -165,6 +165,68 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }];
 }
 
+- (void)_respawnPlayer {
+  _touched = NO;
+  _canFire = NO;
+  _lastTouch = CGPointZero;
+  _rocket = [[YKHammyRocket alloc] init];
+  _rocket.invincible = YES;
+  [_rocket.hammy removeFromParent];
+  _rocket.position = CGPointMake(CGRectGetMidX(self.frame), -20);
+  _rocket.zPosition = -5;
+  self.userInteractionEnabled = NO;
+  [self addChild:self.rocket];
+  SKAction *moveFromBottom = [SKAction moveTo:CGPointMake(CGRectGetMidX(self.frame), 100) duration:1.0];
+  [self.rocket runAction:moveFromBottom completion:^(void) {
+    self.userInteractionEnabled = YES;
+  }];
+  double delayInSeconds = 2.0;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    _rocket.invincible = NO;
+    [_rocket addChild:_rocket.hammy];
+  });
+}
+
+- (void)_updateEnemyAmmoPositionsWithDiff:(NSTimeInterval)diff {
+  [self enumerateChildNodesWithName:YKEnemyAmmoName usingBlock:^(SKNode *node, BOOL *stop) {
+    YKEnemyAmmo *ammo = (YKEnemyAmmo *)node;
+    ammo.position = CGPointMake(ammo.position.x + ammo.velocity.dx * diff, ammo.position.y + ammo.velocity.dy * diff);
+    
+    CGFloat distanceToHammy = CPCGPointDistance(ammo.position, _rocket.position);
+    if (distanceToHammy < ammo.hitRadius + _rocket.hitRadius) {
+      [ammo removeFromParent];
+      
+      if (!_rocket.invincible) {
+        [self _addLargeHitAtPosition:ammo.position overNode:_rocket];
+        
+        _rocket.health--;
+        if (_rocket.health == 0) {
+          CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+          explosion.position = _rocket.position;
+          [explosion advanceSimulationTime:5.0];
+          [self addChild:explosion];
+          [explosion explodeForDuration:1.0];
+          
+          [_rocket removeFromParent];
+          if (self.lives.numLives > 0) {
+            [[self.lives.children lastObject] removeFromParent];
+            [self.lives decrementLife];
+          }
+          
+          if (self.lives.numLives > 0) {
+            // Respawn
+            [self _respawnPlayer];
+          }
+          else {
+            [self _showGameOver];
+          }
+        }
+      }
+    }
+  }];
+}
+
 - (void)_showGameOver {
   [self.view presentScene:[YKGameOverScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
 }
@@ -190,50 +252,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   [self _updateAmmoPositionsWithDiff:diff];
   
   // Enemy ammo position
-  [self enumerateChildNodesWithName:YKEnemyAmmoName usingBlock:^(SKNode *node, BOOL *stop) {
-    YKEnemyAmmo *ammo = (YKEnemyAmmo *)node;
-    ammo.position = CGPointMake(ammo.position.x + ammo.velocity.dx * diff, ammo.position.y + ammo.velocity.dy * diff);
-    
-    CGFloat distanceToHammy = CPCGPointDistance(ammo.position, _rocket.position);
-    if (distanceToHammy < ammo.hitRadius + _rocket.hitRadius) {
-      [self _addLargeHitAtPosition:ammo.position overNode:_rocket];
-      [ammo removeFromParent];
-      
-      _rocket.health--;
-      if (_rocket.health == 0) {
-        CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
-        explosion.position = _rocket.position;
-        [explosion advanceSimulationTime:5.0];
-        [self addChild:explosion];
-        [explosion explodeForDuration:1.0];
-        
-        [_rocket removeFromParent];
-        if (self.lives.numLives > 0) {
-          [[self.lives.children lastObject] removeFromParent];
-          [self.lives decrementLife];
-        }
-        
-        if (self.lives.numLives > 0) {
-          // Respawn
-          _touched = NO;
-          _canFire = NO;
-          _lastTouch = CGPointZero;
-          _rocket = [[YKHammyRocket alloc] init];
-          _rocket.position = CGPointMake(CGRectGetMidX(self.frame), -20);
-          _rocket.zPosition = -5;
-          self.userInteractionEnabled = NO;
-          [self addChild:self.rocket];
-          SKAction *moveFromBottom = [SKAction moveTo:CGPointMake(CGRectGetMidX(self.frame), 100) duration:1.0];
-          [self.rocket runAction:moveFromBottom completion:^(void) {
-            self.userInteractionEnabled = YES;
-          }];
-        }
-        else {
-          [self _showGameOver];
-        }
-      }
-    }
-  }];
+  [self _updateEnemyAmmoPositionsWithDiff:diff];
 
   YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];
   for (YKLevelEnemyBirth *enemyBirth in event.enemies) {
