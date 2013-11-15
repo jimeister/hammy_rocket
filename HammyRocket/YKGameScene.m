@@ -20,6 +20,7 @@
 #import "YKMissile.h"
 #import "YKCloudBackgroundLayer.h"
 #import "YKIslandBackgroundLayer.h"
+#import "YKWaterBackgroundLayer.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 #define MAX_LIVES (3)
@@ -34,7 +35,7 @@ static const CGFloat kOffsetToFinger = 100;
 @property (strong, nonatomic) SKNode *scoreLayer;
 @property (strong, nonatomic) YKIslandBackgroundLayer *islandBackground;
 @property (strong, nonatomic) YKCloudBackgroundLayer *cloudBackground;
-
+@property (strong, nonatomic) YKWaterBackgroundLayer *waterBackground;
 @end
 
 @implementation YKGameScene {
@@ -106,6 +107,9 @@ static const CGFloat kOffsetToFinger = 100;
   
   _cloudBackground = [[YKCloudBackgroundLayer alloc] init];
   [self addChild:_cloudBackground];
+  
+  _waterBackground = [[YKWaterBackgroundLayer alloc] init];
+  [self addChild:_waterBackground];
   
   NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"kirchoffs_law" ofType:@"wav"]];
   NSError *error = nil;
@@ -381,6 +385,7 @@ static const CGFloat kOffsetToFinger = 100;
   
   [_cloudBackground update:diff];
   [_islandBackground update:diff];
+  [_waterBackground update:diff];
   
   _lastUpdateTime = currentTime;
 }

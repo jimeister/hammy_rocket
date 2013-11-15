@@ -44,6 +44,8 @@
 		1553D5011835C6EF005AD9EF /* YKLivesNodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5001835C6EF005AD9EF /* YKLivesNodes.m */; };
 		1553D5041835D64E005AD9EF /* YKGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1553D5031835D64E005AD9EF /* YKGameOverScene.m */; };
 		1589BC9A1836C2CE00000128 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1589BC991836C2CE00000128 /* AVFoundation.framework */; };
+		1589BC9D1836D48500000128 /* YKWaterBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1589BC9C1836D48500000128 /* YKWaterBackgroundLayer.m */; };
+		1589BC9F1836D5E600000128 /* oceantile.png in Resources */ = {isa = PBXBuildFile; fileRef = 1589BC9E1836D5E600000128 /* oceantile.png */; };
 		840180421835537700583789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180411835537700583789 /* Foundation.framework */; };
 		840180441835537700583789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180431835537700583789 /* CoreGraphics.framework */; };
 		840180461835537700583789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840180451835537700583789 /* UIKit.framework */; };
@@ -191,6 +193,9 @@
 		1553D5021835D64E005AD9EF /* YKGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGameOverScene.h; sourceTree = "<group>"; };
 		1553D5031835D64E005AD9EF /* YKGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGameOverScene.m; sourceTree = "<group>"; };
 		1589BC991836C2CE00000128 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1589BC9B1836D48500000128 /* YKWaterBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKWaterBackgroundLayer.h; sourceTree = "<group>"; };
+		1589BC9C1836D48500000128 /* YKWaterBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKWaterBackgroundLayer.m; sourceTree = "<group>"; };
+		1589BC9E1836D5E600000128 /* oceantile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oceantile.png; sourceTree = "<group>"; };
 		8401803E1835537700583789 /* HammyRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammyRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840180411835537700583789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		840180431835537700583789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -335,6 +340,7 @@
 		1553D4BE18355919005AD9EF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1589BC9E1836D5E600000128 /* oceantile.png */,
 				1514705D1836B38D008AE3F0 /* icon@2x.png */,
 				151470591836AE0F008AE3F0 /* cloud_front.png */,
 				1514705A1836AE0F008AE3F0 /* cloud_front@2x.png */,
@@ -396,6 +402,8 @@
 				84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */,
 				84E867DB1836AE01008D2B71 /* YKCloudBackgroundLayer.h */,
 				84E867DC1836AE01008D2B71 /* YKCloudBackgroundLayer.m */,
+				1589BC9B1836D48500000128 /* YKWaterBackgroundLayer.h */,
+				1589BC9C1836D48500000128 /* YKWaterBackgroundLayer.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -806,6 +814,7 @@
 				8432EE7318355D4F00684F7E /* 16x16.png in Resources */,
 				84E867D1183699A4008D2B71 /* GStippyG150.wav in Resources */,
 				8432EE9A18355D4F00684F7E /* disasteroids2_master.png in Resources */,
+				1589BC9F1836D5E600000128 /* oceantile.png in Resources */,
 				1553D4E418355919005AD9EF /* yelp_logo@2x.png in Resources */,
 				1553D4DE18355919005AD9EF /* hammy@2x.png in Resources */,
 				8432EE9E18355D4F00684F7E /* invader2.png in Resources */,
@@ -858,6 +867,7 @@
 				84E867C718360C9F008D2B71 /* YKSubmarineNode.m in Sources */,
 				84E867DD1836AE01008D2B71 /* YKCloudBackgroundLayer.m in Sources */,
 				84E867BF1835DAD6008D2B71 /* YKEnemyEventFactory.m in Sources */,
+				1589BC9D1836D48500000128 /* YKWaterBackgroundLayer.m in Sources */,
 				8432EEB118355FA500684F7E /* CPMath.m in Sources */,
 				8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */,
 				84E867BC18358727008D2B71 /* YKEnemyAmmo.m in Sources */,
