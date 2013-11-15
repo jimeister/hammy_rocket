@@ -10,6 +10,8 @@
 #import "YKGameScene.h"
 #import "YKInstructionsScene.h"
 #import "YKHighScoresScene.h"
+#import "YKHammyRocket.h"
+#import "YKAirplaneNode.h"
 
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kStartNode = @"kStartNode";
@@ -18,6 +20,8 @@ static NSString *const kInstructions = @"kInstructions";
 
 @implementation YKTitleScene {
   BOOL _contentCreated;
+  YKHammyRocket *_rocket;
+  YKAirplaneNode *_airplane;
 }
 
 - (void)_createSceneContent {
@@ -57,6 +61,27 @@ static NSString *const kInstructions = @"kInstructions";
   titleLabel.fontColor = [UIColor whiteColor];
   titleLabel.position = CGPointMake(CGRectGetMidX(self.frame), 900);
   [self addChild:titleLabel];
+  
+  _rocket = [[YKHammyRocket alloc] init];
+  _rocket.position = CGPointMake(CGRectGetMidX(self.frame), 350);
+  SKAction *hover = [SKAction sequence:@[[SKAction moveByX:200 y:100 duration:3.0],
+                                         [SKAction moveByX:-200 y:100 duration:3.0],
+                                         [SKAction moveByX:-200 y:-100 duration:3.0],
+                                         [SKAction moveByX:200 y:-100 duration:3.0]
+                                         ]];
+  [_rocket runAction:[SKAction repeatActionForever:hover]];
+  [self addChild:_rocket];
+  
+  _airplane = [[YKAirplaneNode alloc] initWithStyle:0];
+  _airplane.position = CGPointMake(CGRectGetMidX(self.frame), 800);
+  SKAction *hover2 = [SKAction sequence:@[[SKAction moveByX:300 y:0 duration:2.0],
+                                          [SKAction moveByX:-600 y:0 duration:4.0],
+                                          [SKAction moveByX:300 y:0 duration:2.0],
+                                          [SKAction moveByX:0 y:-100 duration:1.5],
+                                          [SKAction moveByX:0 y:100 duration:1.5]
+                                          ]];
+  [_airplane runAction:[SKAction repeatActionForever:hover2]];
+  [self addChild:_airplane];
 }
 
 - (void)didMoveToView:(SKView *)view {
