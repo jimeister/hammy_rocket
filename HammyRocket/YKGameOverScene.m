@@ -28,6 +28,20 @@ static NSString *const kQuitNode = @"kQuitNode";
   gameOverLabel.position = CGPointMake(CGRectGetMidX(self.frame), 900);
   [self addChild:gameOverLabel];
   
+  SKLabelNode *yourScoreLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+  yourScoreLabel.text = @"Your score was";
+  yourScoreLabel.fontSize = 30.0;
+  yourScoreLabel.fontColor = [UIColor whiteColor];
+  yourScoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), 750);
+  [self addChild:yourScoreLabel];
+  
+  SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+  scoreLabel.text = [NSString stringWithFormat:@"%d", self.finalScore];
+  scoreLabel.fontSize = 40.0;
+  scoreLabel.fontColor = [UIColor whiteColor];
+  scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), 700);
+  [self addChild:scoreLabel];
+  
   SKLabelNode *playAgainLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
   playAgainLabel.text = @"Play Again";
   playAgainLabel.name = kPlayAgainNode;

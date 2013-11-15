@@ -267,7 +267,9 @@ static const CGFloat kOffsetToFinger = 100;
 
 - (void)_showGameOver {
   [self removeAllActions];
-  [self.view presentScene:[YKGameOverScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
+  YKGameOverScene *gameOverScene = [YKGameOverScene sceneWithSize:self.size];
+  gameOverScene.finalScore = _score;
+  [self.view presentScene:gameOverScene transition:[SKTransition fadeWithDuration:0.5]];
 }
 
 - (void)_enableMissiles {

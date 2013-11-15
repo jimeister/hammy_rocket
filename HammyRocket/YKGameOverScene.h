@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface YKGameOverScene : SKScene
-
+@property (nonatomic) NSUInteger finalScore;
 @end
