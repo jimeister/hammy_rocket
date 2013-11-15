@@ -127,6 +127,8 @@
 		84E867D1183699A4008D2B71 /* GStippyG150.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D0183699A4008D2B71 /* GStippyG150.wav */; };
 		84E867D318369C66008D2B71 /* gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D218369C66008D2B71 /* gun.wav */; };
 		84E867D518369DDF008D2B71 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D418369DDF008D2B71 /* explosion.wav */; };
+		84E867D81836A259008D2B71 /* YKIslandBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */; };
+		84E867DA1836A4FE008D2B71 /* menu_select_15.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E867D91836A4FE008D2B71 /* menu_select_15.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +291,9 @@
 		84E867D0183699A4008D2B71 /* GStippyG150.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GStippyG150.wav; sourceTree = "<group>"; };
 		84E867D218369C66008D2B71 /* gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gun.wav; sourceTree = "<group>"; };
 		84E867D418369DDF008D2B71 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		84E867D61836A259008D2B71 /* YKIslandBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKIslandBackgroundLayer.h; sourceTree = "<group>"; };
+		84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKIslandBackgroundLayer.m; sourceTree = "<group>"; };
+		84E867D91836A4FE008D2B71 /* menu_select_15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menu_select_15.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +377,8 @@
 				84E867C618360C9F008D2B71 /* YKSubmarineNode.m */,
 				84E867CA1836891E008D2B71 /* YKMissile.h */,
 				84E867CB1836891E008D2B71 /* YKMissile.m */,
+				84E867D61836A259008D2B71 /* YKIslandBackgroundLayer.h */,
+				84E867D71836A259008D2B71 /* YKIslandBackgroundLayer.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -638,6 +645,7 @@
 		84E867CD18369496008D2B71 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				84E867D91836A4FE008D2B71 /* menu_select_15.wav */,
 				84E867D218369C66008D2B71 /* gun.wav */,
 				84E867CE18369496008D2B71 /* kirchoffs_law.wav */,
 				84E867D0183699A4008D2B71 /* GStippyG150.wav */,
@@ -741,6 +749,7 @@
 				84E867D318369C66008D2B71 /* gun.wav in Resources */,
 				1553D4DC18355919005AD9EF /* contribute_review_5star@2x.png in Resources */,
 				1553D4D718355919005AD9EF /* contribute_review_3star.png in Resources */,
+				84E867DA1836A4FE008D2B71 /* menu_select_15.wav in Resources */,
 				8432EE7F18355D4F00684F7E /* vehicles.png in Resources */,
 				8432EE8218355D4F00684F7E /* arc2.png in Resources */,
 				84E867C918360E6A008D2B71 /* submarine.png in Resources */,
@@ -833,6 +842,7 @@
 				8432EEB218355FA500684F7E /* CPRocketNode.m in Sources */,
 				1553D4ED18357571005AD9EF /* YKRocketAmmo.m in Sources */,
 				8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */,
+				84E867D81836A259008D2B71 /* YKIslandBackgroundLayer.m in Sources */,
 				84018072183553BB00583789 /* YKSpriteViewController.m in Sources */,
 				1553D5011835C6EF005AD9EF /* YKLivesNodes.m in Sources */,
 				84E867C21835E58B008D2B71 /* YKBigPlaneNode.m in Sources */,

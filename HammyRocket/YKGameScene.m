@@ -17,6 +17,7 @@
 #import "YKTitleScene.h"
 #import "YKGameOverScene.h"
 #import "YKMissile.h"
+#import "YKIslandBackgroundLayer.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 #define MAX_LIVES (3)
@@ -27,6 +28,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
 @interface YKGameScene ()
 @property (strong, nonatomic) YKLevelScheduler *scheduler;
 @property (strong, nonatomic) SKNode *scoreLayer;
+@property (strong, nonatomic) YKIslandBackgroundLayer *islandBackground;
 @end
 
 @implementation YKGameScene {
@@ -60,7 +62,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
 }
 
 - (void)_createSceneContent {
-  self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.3 alpha:1.0];
+  self.backgroundColor = [SKColor colorWithRed:0.0 green:0.4 blue:0.7 alpha:1.0];
   _lastUpdateTime = 0.0;
   
   _rocket = [[YKHammyRocket alloc] init];
@@ -88,6 +90,9 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
   scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - 30, CGRectGetMaxY(self.frame) - 30);
   [_scoreLayer addChild:scoreLabel];
+  
+  _islandBackground = [[YKIslandBackgroundLayer alloc] init];
+  [self addChild:_islandBackground];
   
   [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"kirchoffs_law.wav" waitForCompletion:YES]]];
 }
@@ -342,6 +347,8 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
       [powerUp removeFromParent];
     }
   }];
+  
+  [_islandBackground update:diff];
   
   _lastUpdateTime = currentTime;
 }
