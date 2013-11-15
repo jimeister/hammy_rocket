@@ -7,9 +7,11 @@
 //
 
 #import "YKHammyRocket.h"
+#import "CPMath.h"
 #import "YKPowerUp.h"
+#import "CPSmokeEmitterNode.h"
 
-#define MAX_HEALTH  500.0
+#define MAX_HEALTH (2)
 
 @implementation YKHammyRocket
 
@@ -50,6 +52,22 @@
   self.flame.position = CGPointMake(0, -35.0);
   self.flame.zPosition = self.rocket_interior.zPosition - 1;
   [self addChild:self.flame];
+  
+  self.smokeEmitter = [[CPSmokeEmitterNode alloc] init];
+  self.smokeEmitter.zPosition = self.zPosition + 1;
+  self.smokeEmitter.particleBirthRate = 0;
+  self.smokeEmitter.emissionAngle = CPDegreesToRadian(270);
+  [self addChild:self.smokeEmitter];
+}
+
+- (void)setHealth:(NSInteger)health {
+  _health = health;
+  if (health < MAX_HEALTH) {
+    [self.smokeEmitter resetSimulation];
+    self.smokeEmitter.particleBirthRate = 4.0;
+  } else {
+    self.smokeEmitter.particleBirthRate = 0.0;
+  }
 }
 
 - (void)applyPowerUp:(YKPowerUp *)powerUp {

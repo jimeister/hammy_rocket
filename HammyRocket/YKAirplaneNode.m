@@ -28,6 +28,23 @@
     _images = [[[self class] planeImages] objectAtIndex:_style];
     _bodyNode = self.bodyNode;
     self.velocity = CGVectorMake(0, -90);
+    
+    self.times = @[
+                   @(1.1),
+                   @(1.3),
+                   @(1.5),
+                   @(1.6),
+                   @(1.7),
+                   @(1.8)
+                   ];
+    self.events = @[
+                    @"stop",
+                    @"fireDown",
+                    @"turnRightDown",
+                    @"turnRight",
+                    @"turnRightUp",
+                    @"turnUp"
+                    ];
   }
   return self;
 }
@@ -78,6 +95,15 @@
   self.velocity = CGVectorMake(45, 45);
 }
 
+- (void)turnUp {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[4]];
+  self.velocity = CGVectorMake(0, 45);
+}
+
+- (void)stop {
+  self.velocity = CGVectorMake(0, 0);
+}
+
 - (void)fireDown {
   YKEnemyAmmo *ammo = [[YKEnemyAmmo alloc] init];
   ammo.position = self.position;
@@ -88,20 +114,9 @@
 
 - (void)update:(NSTimeInterval)diff {
   [super update:diff];
-  static NSArray *times = nil;
-  static NSDictionary *events = nil;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    times = @[@(2), @(5), @(6), @(7)];
-    events = @{
-               @(2) : @"turnRightDown",
-               @(5) : @"turnRight",
-               @(6) : @"fireDown",
-               @(7) : @"turnRightUp"
-               };
-  });
-  if (self.eventIndex < times.count && [times[self.eventIndex] isEqualToNumber:@((NSInteger)self.timeAlive)]) {
-    NSString *selectorName = events[times[self.eventIndex]];
+
+  if (self.eventIndex < self.times.count && self.timeAlive > [self.times[self.eventIndex] floatValue]) {
+    NSString *selectorName = self.events[self.eventIndex];
     [self performSelector:NSSelectorFromString(selectorName)];
     self.eventIndex++;
   }

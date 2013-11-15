@@ -28,7 +28,7 @@
   NSMutableArray *enemies = [NSMutableArray arrayWithCapacity:numEnemies];
   for (NSUInteger i = 0; i < numEnemies; ++i) {
     YKAirplaneNode *enemy = [[YKAirplaneNode alloc] initWithStyle:style];
-    [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:CGPointMake(x + 60*i, 20)]];
+    [enemies addObject:[YKLevelEnemyBirth enemyBirthWithNode:enemy birthPlace:CGPointMake(x + 70*i, 20)]];
   }
   event.enemies = enemies;
   return event;

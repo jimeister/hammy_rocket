@@ -179,6 +179,17 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     if (distanceToHammy < ammo.hitRadius + _rocket.hitRadius) {
       [self _addLargeHitAtPosition:ammo.position overNode:_rocket];
       [ammo removeFromParent];
+      
+      _rocket.health--;
+      if (_rocket.health == 0) {
+        CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+        explosion.position = _rocket.position;
+        [explosion advanceSimulationTime:5.0];
+        [self addChild:explosion];
+        [explosion explodeForDuration:1.0];
+        
+        [_rocket removeFromParent];
+      }
     }
   }];
 

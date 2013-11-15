@@ -21,6 +21,10 @@ extern NSString *const YKEnemyNodeName;
 @property (readonly, nonatomic) YKPowerUp *powerUp;
 @property (nonatomic) NSInteger score; // For killing enemy
 
+// Events
+@property (strong, nonatomic) NSArray *times;
+@property (strong, nonatomic) NSArray *events;
+
 // Public for subclasses, clients shouldn't touch
 @property (nonatomic) NSTimeInterval timeAlive;
 @property (nonatomic) NSInteger eventIndex;
