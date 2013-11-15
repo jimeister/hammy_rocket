@@ -9,7 +9,7 @@
 #import "CPExplosionEmitterNode.h"
 #import "CPSimpleSpriteFactory.h"
 
-static const CGFloat kDefaultExplosionEndingDiameter = 10.0;
+static const CGFloat kDefaultExplosionEndingDiameter = 20.0;
 
 @implementation CPExplosionEmitterNode
 
@@ -22,12 +22,12 @@ static const CGFloat kDefaultExplosionEndingDiameter = 10.0;
         self.particleLifetime = 3.0;
         self.particleLifetimeRange = 0.0;
         
-        self.particleSpeed = 15.0;
+        self.particleSpeed = 25.0;
         self.particleSpeedRange = 0.5;
         self.emissionAngle = M_PI_2;
         self.emissionAngleRange = 2 * M_PI;
 
-        self.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory circleImageWithDiameter:kDefaultExplosionEndingDiameter fillColor:[UIColor whiteColor] strokeColor:[UIColor whiteColor]]];
+        self.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory circleImageWithDiameter:kDefaultExplosionEndingDiameter fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
         self.particleSize = CGSizeMake(kDefaultExplosionEndingDiameter, kDefaultExplosionEndingDiameter);
         
         //self.particleScale = 0.0;

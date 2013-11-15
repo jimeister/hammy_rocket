@@ -19,6 +19,7 @@
   if ((self = [super init])) {
     _fireRate = rate;
     _ammoVelocity = 500.0;
+    _damage = 1;
   }
   return self;
 }

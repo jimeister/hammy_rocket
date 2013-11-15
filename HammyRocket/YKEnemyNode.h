@@ -19,6 +19,7 @@ extern NSString *const YKEnemyNodeName;
 @property (nonatomic) NSInteger health;
 @property (nonatomic) NSInteger damage;
 @property (readonly, nonatomic) YKPowerUp *powerUp;
+@property (nonatomic) NSInteger score; // For killing enemy
 
 // Public for subclasses, clients shouldn't touch
 @property (nonatomic) NSTimeInterval timeAlive;

@@ -14,11 +14,17 @@
 #import "CPExplosionEmitterNode.h"
 #import "CPSimpleSpriteFactory.h"
 
+static NSString *const kDefaultFont = @"Courier";
+static NSString *const kScoreNodeName = @"kScoreNodeName";
+
 @interface YKGameScene ()
 @property (strong, nonatomic) YKLevelScheduler *scheduler;
+@property (strong, nonatomic) SKNode *scoreLayer;
 @end
 
 @implementation YKGameScene {
+  
+  NSUInteger _score;
   BOOL _contentCreated;
   NSTimeInterval _lastUpdateTime;
   BOOL _touched;
@@ -46,6 +52,18 @@
   _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
   [self.ammo createFireAction];
   [self addChild:self.ammo];
+  
+  _scoreLayer = [[SKNode alloc] init];
+  [self addChild:_scoreLayer];
+
+  SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
+  scoreLabel.text = @"0";
+  scoreLabel.name = kScoreNodeName;
+  scoreLabel.fontSize = 30.0;
+  scoreLabel.fontColor = [UIColor whiteColor];
+  scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+  scoreLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - 30, CGRectGetMaxY(self.frame) - 30);
+  [_scoreLayer addChild:scoreLabel];
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -107,6 +125,21 @@
         [smallHit explodeForDuration:0.1];
         
         [ammoNode removeFromParent];
+        
+        YKEnemyNode *enemyNode = (YKEnemyNode *)node;
+        enemyNode.health -= self.ammo.damage;
+        if (enemyNode.health <= 0) {
+          _score += enemyNode.score;
+          SKLabelNode *scoreLabel = (SKLabelNode *)[_scoreLayer childNodeWithName:kScoreNodeName];
+          scoreLabel.text = [@(_score) description];
+          
+          [enemyNode removeFromParent];
+          CPExplosionEmitterNode *explosion = [[CPExplosionEmitterNode alloc] init];
+          explosion.position = enemyNode.position;
+          [explosion advanceSimulationTime:5.0];
+          [self addChild:explosion];
+          [explosion explodeForDuration:0.4];
+        }
       }
     }];
   }];

@@ -16,6 +16,8 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
   if ((self = [super init])) {
     self.name = YKEnemyNodeName;
     _timeAlive = 0.0;
+    _health = 2;
+    _score = 100;
   }
   return self;
 }
