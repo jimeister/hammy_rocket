@@ -36,11 +36,15 @@ static const CGFloat kDieDuration = 0.5;
 @synthesize bodyNode=_bodyNode;
 
 - (instancetype)init {
+  return [self initWithSubmergeTime:8];
+}
+
+- (instancetype)initWithSubmergeTime:(CGFloat)submergeTime {
   if ((self = [super init])) {
     _images = [[self class] submarineImages];
     _bodyNode = self.bodyNode;
     
-    self.times = @[@(0.01), @(8)];
+    self.times = @[@(0.01), @(submergeTime)];
     self.events = @[@"emerge", @"submerge"];
     self.health = 30;
     self.ammoSpeed = 150;

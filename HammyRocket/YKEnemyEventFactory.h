@@ -35,5 +35,6 @@
 + (YKLevelEvent *)bigEnemyPlaneEventAtX:(CGFloat)x;
 
 + (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point;
++ (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point submergeTime:(CGFloat)submergeTime;
 
 @end

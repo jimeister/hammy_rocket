@@ -138,8 +138,12 @@
 }
 
 + (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point {
+  return [[self class] submarineEventAtPoint:point submergeTime:8];
+}
+
++ (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point submergeTime:(CGFloat)submergeTime {
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
-  YKSubmarineNode *sub = [[YKSubmarineNode alloc] init];
+  YKSubmarineNode *sub = [[YKSubmarineNode alloc] initWithSubmergeTime:submergeTime];
   event.enemies = @[[YKLevelEnemyBirth enemyBirthWithNode:sub birthPlace:point]];
   return event;
 }

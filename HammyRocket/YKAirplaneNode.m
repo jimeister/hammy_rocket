@@ -110,6 +110,11 @@
   self.velocity = CGVectorMake(0, self.baseSpeed/2);
 }
 
+- (void)turnLeft {
+  _bodyNode.texture = [SKTexture textureWithImage:_images[6]];
+  self.velocity = CGVectorMake(-self.baseSpeed/2, 0);
+}
+
 - (void)turnLeftDown {
   _bodyNode.texture = [SKTexture textureWithImage:_images[7]];
   self.velocity = CGVectorMake(-self.baseSpeed/2, -self.baseSpeed/2);

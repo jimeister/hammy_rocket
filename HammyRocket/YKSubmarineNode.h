@@ -10,4 +10,6 @@
 
 @interface YKSubmarineNode : YKEnemyNode
 
+- (instancetype)initWithSubmergeTime:(CGFloat)submergeTime;
+
 @end

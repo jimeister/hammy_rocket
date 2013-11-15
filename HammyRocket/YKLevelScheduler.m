@@ -11,7 +11,7 @@
 #import "YKPowerUp.h"
 #import "YKEnemyEventFactory.h"
 
-static const NSInteger kCycleLength = 100;
+static const NSInteger kCycleLength = 200;
 
 @implementation YKLevelScheduler {
   BOOL _started;
@@ -58,6 +58,21 @@ static const NSInteger kCycleLength = 100;
            };
    */
   
+//  return @{
+//           // Step up yo game
+//           @(74-73) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:150],
+//           @(75-73) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:618],
+//           @(76-73) : [YKEnemyEventFactory submarineEventAtPoint:CGPointMake(CGRectGetMidX([[UIScreen mainScreen] bounds]), -400) submergeTime:13],
+//           @(80-73) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:4 delay:0.8 position:CGPointMake(CGRectGetWidth([[UIScreen mainScreen] bounds]) + 20, -50) style:0 directionAction:@"turnLeft" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+//           @(81-73) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:4 delay:0.8 position:CGPointMake(-20, -100) style:0 directionAction:@"turnRight" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+//           
+//           @(84-73) : [YKEnemyEventFactory halfCircleCounterClockwiseEventWithNumEnemies:6 delay:0.8 position:CGPointMake(200, -50) style:2 firingTimes:@[@(2), @(3), @(4)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+//           @(86-73) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(75, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+//           @(87-73) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(693, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+//           @(88-73) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
+//
+//
+//           };
   
   return @{
            @(1) : [YKEnemyEventFactory basicEnemyEventWithNumEnemies:3 x:100 style:0 timeToFlyDown:0],
@@ -98,6 +113,30 @@ static const NSInteger kCycleLength = 100;
            @(58) : [YKEnemyEventFactory halfCircleCounterClockwiseEventWithNumEnemies:7 delay:0.8 position:CGPointMake(-20, -50) style:2 firingTimes:@[@(2.5), @(3.5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
            @(60) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(-20, -150) style:3 directionAction:@"turnShallowRightDown" firingTimes:@[@(1), @(3)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
            @(62) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(-20, -250) style:0 directionAction:@"turnShallowRightDown" firingTimes:@[@(0.5), @(2.5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+           @(66) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:CGRectGetMidX([[UIScreen mainScreen] bounds])],
+           // Hard event
+           @(69) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(150, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+           @(70) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(618, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+           
+           // Step up yo game
+           @(74) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:150],
+           @(75) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:618],
+           @(76) : [YKEnemyEventFactory submarineEventAtPoint:CGPointMake(CGRectGetMidX([[UIScreen mainScreen] bounds]), -400) submergeTime:13],
+           @(80) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:4 delay:0.8 position:CGPointMake(CGRectGetWidth([[UIScreen mainScreen] bounds]) + 20, -50) style:0 directionAction:@"turnLeft" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+           @(81) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:4 delay:0.8 position:CGPointMake(-20, -100) style:0 directionAction:@"turnRight" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+           
+           @(84) : [YKEnemyEventFactory halfCircleCounterClockwiseEventWithNumEnemies:6 delay:0.8 position:CGPointMake(200, -50) style:2 firingTimes:@[@(2), @(3), @(4)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180],
+           @(86) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(75, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+           @(87) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(693, 50) style:3 directionAction:@"turnDown" firingTimes:@[@(1), @(3), @(5)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer", @"fireAtPlayer"] baseSpeed:180 ammoSpeed:150],
+           @(88) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
+
+
+           
+//           // Two subs
+//           @(76) : [YKEnemyEventFactory submarineEventAtPoint:CGPointMake(CGRectGetMidX([[UIScreen mainScreen] bounds]) - 90, -400)],
+//           @(77) : [YKEnemyEventFactory submarineEventAtPoint:CGPointMake(CGRectGetMidX([[UIScreen mainScreen] bounds]) + 90, -400)],
+
+      
            };
 }
 
