@@ -46,6 +46,10 @@ NSString *const YKPowerUpName = @"YKPowerUp";
       [self addChild:self.node];
       break;
     case YKAmmo:
+      self.node = [SKSpriteNode spriteNodeWithImageNamed:@"bookmark_badge.png"];
+      self.node.position = CGPointMake(0, 0);
+      self.node.size = CGSizeMake(40, 40);
+      [self addChild:self.node];
     default:
       break;
   }

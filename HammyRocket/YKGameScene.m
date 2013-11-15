@@ -36,7 +36,6 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   BOOL _touched;
   BOOL _canFire;
   CGPoint _lastTouch;
-  BOOL _testCount;
 }
 
 @synthesize scheduler=_scheduler;
@@ -169,6 +168,9 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   _touched = NO;
   _canFire = NO;
   _lastTouch = CGPointZero;
+  _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
+  [self.ammo createFireAction];
+  [self addChild:self.ammo];
   _rocket = [[YKHammyRocket alloc] init];
   _rocket.invincible = YES;
   [_rocket.hammy removeFromParent];
@@ -209,6 +211,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
           [explosion explodeForDuration:1.0];
           
           [_rocket removeFromParent];
+          [_ammo removeFromParent];
           if (self.lives.numLives > 0) {
             [[self.lives.children lastObject] removeFromParent];
             [self.lives decrementLife];
@@ -242,10 +245,9 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     }];
   }
   
-  if (!_testCount) {
-    [self.ammo addAdditionalAmmoWithDx:-80];
-    [self.ammo addAdditionalAmmoWithDx:80];
-    _testCount = YES;
+  if (self.rocket.enableBonusAmmo) {
+    self.ammo.upgradeAmmo = YES;
+    self.rocket.enableBonusAmmo = NO;
   }
   
   // Update ammo position here

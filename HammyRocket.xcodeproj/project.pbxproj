@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151ED137183698A700AC3314 /* bookmark_badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 151ED135183698A700AC3314 /* bookmark_badge.png */; };
+		151ED138183698A700AC3314 /* bookmark_badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151ED136183698A700AC3314 /* bookmark_badge@2x.png */; };
 		1553D4D318355919005AD9EF /* contribute_review_1star.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4BF18355919005AD9EF /* contribute_review_1star.png */; };
 		1553D4D418355919005AD9EF /* contribute_review_1star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4C018355919005AD9EF /* contribute_review_1star@2x.png */; };
 		1553D4D518355919005AD9EF /* contribute_review_2star.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4C118355919005AD9EF /* contribute_review_2star.png */; };
@@ -131,6 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151ED135183698A700AC3314 /* bookmark_badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_badge.png; sourceTree = "<group>"; };
+		151ED136183698A700AC3314 /* bookmark_badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark_badge@2x.png"; sourceTree = "<group>"; };
 		1553D4BF18355919005AD9EF /* contribute_review_1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contribute_review_1star.png; sourceTree = "<group>"; };
 		1553D4C018355919005AD9EF /* contribute_review_1star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contribute_review_1star@2x.png"; sourceTree = "<group>"; };
 		1553D4C118355919005AD9EF /* contribute_review_2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contribute_review_2star.png; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 		1553D4BE18355919005AD9EF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				151ED135183698A700AC3314 /* bookmark_badge.png */,
+				151ED136183698A700AC3314 /* bookmark_badge@2x.png */,
 				1553D4F818359480005AD9EF /* check_burst.png */,
 				1553D4F918359480005AD9EF /* check_burst@2x.png */,
 				8432EE3218355D4F00684F7E /* spritelib_gpl */,
@@ -694,6 +700,7 @@
 				8432EE6D18355D4F00684F7E /* fishbaddie_parts.png in Resources */,
 				8432EE9618355D4F00684F7E /* 1945.png in Resources */,
 				8432EE7618355D4F00684F7E /* 36x36.png in Resources */,
+				151ED137183698A700AC3314 /* bookmark_badge.png in Resources */,
 				8432EE8A18355D4F00684F7E /* char11.png in Resources */,
 				8432EE7418355D4F00684F7E /* 24x24.png in Resources */,
 				8432EE7C18355D4F00684F7E /* 96x96.png in Resources */,
@@ -708,6 +715,7 @@
 				8432EE7E18355D4F00684F7E /* tankbrigade.png in Resources */,
 				8432EE9118355D4F00684F7E /* char8.png in Resources */,
 				8432EE8918355D4F00684F7E /* char10.png in Resources */,
+				151ED138183698A700AC3314 /* bookmark_badge@2x.png in Resources */,
 				8432EE8718355D4F00684F7E /* blocks2.png in Resources */,
 				8432EE7B18355D4F00684F7E /* 64x96.png in Resources */,
 				8432EE7718355D4F00684F7E /* 40x40.png in Resources */,

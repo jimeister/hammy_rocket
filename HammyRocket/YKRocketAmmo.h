@@ -18,11 +18,11 @@ extern NSString *const YKAmmoName;
 
 - (instancetype)initWithFireRate:(CGFloat)rate;
 - (void)createFireAction;
-- (void)addAdditionalAmmoWithDx:(CGFloat)dx;
 
 @property (nonatomic, strong) SKSpriteNode *ammo;
 @property (nonatomic, strong) SKAction *fire;
 @property (nonatomic) CGFloat ammoVelocity;
 @property (nonatomic) NSUInteger damage;
+@property (nonatomic) BOOL upgradeAmmo;
 
 @end

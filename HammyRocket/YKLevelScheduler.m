@@ -39,8 +39,9 @@
            @(5) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(CGRectGetWidth([[UIScreen mainScreen] bounds]) + 20, -100) style:4 directionAction:@"turnShallowLeftDown" firingTimes:@[@(1), @(3)] firingActions:@[@"fireDown", @"fireDown"] baseSpeed:180],
            @(6) : [YKEnemyEventFactory lineEnemyEventWithNumEnemies:5 delay:0.8 position:CGPointMake(500, 20) style:4 directionAction:@"turnDown" firingTimes:@[@(1), @(2)] firingActions:@[@"fireAtPlayer", @"fireAtPlayer"] baseSpeed:130],
            @(8) : [YKEnemyEventFactory basicEnemyEventWithNumEnemies:6 x:80 style:3],
-           @(8) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
+           @(10) : [self basicPowerUpEventWithType:YKHealth x:40 value:20.0 andTimeToExist:10.0],
            @(12) : [self basicPowerUpEventWithType:YKSpeed x:50 value:200.0 andTimeToExist:15.0],
+           @(14) : [self basicPowerUpEventWithType:YKAmmo x:100 value:200.0 andTimeToExist:15.0],
            @(15) : [YKEnemyEventFactory bigEnemyPlaneEventAtX:CGRectGetMidX([[UIScreen mainScreen] bounds])],
            };
 }

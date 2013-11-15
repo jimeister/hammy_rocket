@@ -51,15 +51,21 @@ NSString *const YKAmmoName = @"YKAmmoName";
   ammo.name = YKAmmoName;
   ammo.ammoDirection = CGVectorMake(0, _ammoVelocity);
   [self addChild:ammo];
-}
-
-// Put this into the fire action
-- (void)addAdditionalAmmoWithDx:(CGFloat)dx {
-  YKAmmoSprite *ammo = [[YKAmmoSprite alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
-  ammo.position = CGPointMake(0, 0);
-  ammo.name = YKAmmoName;
-  ammo.ammoDirection = CGVectorMake(dx, _ammoVelocity);
-  [self addChild:ammo];
+  
+  if (self.upgradeAmmo) {
+    self.fireRate = 0.10;
+    YKAmmoSprite *leftAmmo = [[YKAmmoSprite alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
+    leftAmmo.position = CGPointMake(0, 0);
+    leftAmmo.name = YKAmmoName;
+    leftAmmo.ammoDirection = CGVectorMake(-80, _ammoVelocity);
+    [self addChild:leftAmmo];
+    
+    YKAmmoSprite *rightAmmo = [[YKAmmoSprite alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
+    rightAmmo.position = CGPointMake(0, 0);
+    rightAmmo.name = YKAmmoName;
+    rightAmmo.ammoDirection = CGVectorMake(80, _ammoVelocity);
+    [self addChild:rightAmmo];
+  }
 }
 
 @end
