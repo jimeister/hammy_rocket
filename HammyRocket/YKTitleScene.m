@@ -56,7 +56,7 @@ static NSString *const kInstructions = @"kInstructions";
   [self addChild:highScoresLabel];
   
   SKLabelNode *titleLabel = [SKLabelNode labelNodeWithFontNamed:kDefaultFont];
-  titleLabel.text = @"Hammy In Space";
+  titleLabel.text = @"Sky Hamster";
   titleLabel.fontSize = 60.0;
   titleLabel.fontColor = [UIColor whiteColor];
   titleLabel.position = CGPointMake(CGRectGetMidX(self.frame), 900);
