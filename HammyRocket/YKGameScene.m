@@ -274,6 +274,7 @@ static const CGFloat kOffsetToFinger = 100;
 
 - (void)update:(NSTimeInterval)currentTime {
   NSTimeInterval diff = currentTime - _lastUpdateTime;
+  if (diff > 1.0) return;
   
   [self _handlePlayerMoveWithDiff:diff];
   if (_touched && _canFire) {
