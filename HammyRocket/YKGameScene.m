@@ -15,6 +15,8 @@
 #import "CPSimpleSpriteFactory.h"
 #import "YKEnemyAmmo.h"
 
+#define ARC4RANDOM_MAX 0x100000000
+
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kScoreNodeName = @"kScoreNodeName";
 
@@ -198,7 +200,8 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }];
   
   if (event.powerUp) {
-    event.powerUp.powerUp.position = CGPointMake(event.powerUp.birthPlace.x, event.powerUp.birthPlace.y + CGRectGetMaxY(self.frame));
+    CGFloat x = ((double)arc4random() / ARC4RANDOM_MAX) * (self.frame.size.width - 20) + 10;
+    event.powerUp.powerUp.position = CGPointMake(x, event.powerUp.birthPlace.y + CGRectGetMaxY(self.frame));
     [self addChild:event.powerUp.powerUp];
   }
   
