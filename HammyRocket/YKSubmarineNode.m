@@ -49,7 +49,7 @@ static const CGFloat kDieDuration = 0.5;
     _coolDown = 0.5;
     _fireTimer = 0.5;
     
-    self.zPosition = -10;
+    self.zPosition = -102;
   }
   return self;
 }

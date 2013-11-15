@@ -105,7 +105,7 @@ static const CGFloat kOffsetToFinger = 100;
   _cloudBackground = [[YKCloudBackgroundLayer alloc] init];
   [self addChild:_cloudBackground];
   
-  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"kirchoffs_law.wav" waitForCompletion:YES]]];
+  [self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"GStippyG150.wav" waitForCompletion:YES]]];
 }
 
 - (void)didMoveToView:(SKView *)view {
