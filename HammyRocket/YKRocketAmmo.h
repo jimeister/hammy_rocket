@@ -8,10 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+extern NSString *const YKAmmoName;
+
+@interface YKAmmoSprite : SKSpriteNode
+@property (nonatomic) CGVector ammoDirection;
+@end
+
 @interface YKRocketAmmo : SKNode
 
 - (instancetype)initWithFireRate:(CGFloat)rate;
 - (void)createFireAction;
+- (void)addAdditionalAmmoWithDx:(CGFloat)dx;
 
 @property (nonatomic, strong) SKSpriteNode *ammo;
 @property (nonatomic, strong) SKAction *fire;

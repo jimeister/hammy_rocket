@@ -9,6 +9,11 @@
 #import "YKRocketAmmo.h"
 #import "UIImage+YKUtils.h"
 
+NSString *const YKAmmoName = @"YKAmmoName";
+
+@implementation YKAmmoSprite
+@end
+
 @interface YKRocketAmmo ()
 @property (nonatomic) CGFloat fireRate;
 @end
@@ -41,9 +46,19 @@
 }
 
 - (void)_createAmmo {
-  SKSpriteNode *ammo = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
+  YKAmmoSprite *ammo = [[YKAmmoSprite alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
   ammo.position = CGPointMake(0, 0);
-  ammo.name = @"ammo";
+  ammo.name = YKAmmoName;
+  ammo.ammoDirection = CGVectorMake(0, _ammoVelocity);
+  [self addChild:ammo];
+}
+
+// Put this into the fire action
+- (void)addAdditionalAmmoWithDx:(CGFloat)dx {
+  YKAmmoSprite *ammo = [[YKAmmoSprite alloc] initWithTexture:[SKTexture textureWithImage:[[self class] singleAmmoImage]]];
+  ammo.position = CGPointMake(0, 0);
+  ammo.name = YKAmmoName;
+  ammo.ammoDirection = CGVectorMake(dx, _ammoVelocity);
   [self addChild:ammo];
 }
 

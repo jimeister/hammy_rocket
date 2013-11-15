@@ -36,6 +36,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   BOOL _touched;
   BOOL _canFire;
   CGPoint _lastTouch;
+  BOOL _testCount;
 }
 
 @synthesize scheduler=_scheduler;
@@ -125,14 +126,17 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
 }
 
 - (void)_updateAmmoPositionsWithDiff:(NSTimeInterval)diff {
-  [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *ammoNode, BOOL *stop) {
+  [self.ammo enumerateChildNodesWithName:YKAmmoName usingBlock:^(SKNode *ammoNode, BOOL *stop) {
     if (CGPointEqualToPoint(ammoNode.position, CGPointMake(0, 0))) {
       ammoNode.position = CGPointMake(_rocket.position.x, _rocket.position.y + 40);
     }
     else {
-      CGFloat ammoVelocity = self.ammo.ammoVelocity * diff;
+      //CGFloat ammoVelocity = self.ammo.ammoVelocity * diff;
       CGPoint position = ammoNode.position;
-      ammoNode.position = CGPointMake(position.x, position.y + ammoVelocity);
+      YKAmmoSprite *ammo = (YKAmmoSprite *)ammoNode;
+      //ammoNode.position = CGPointMake(position.x, position.y + ammoVelocity);
+      
+      ammoNode.position = CGPointMake(position.x + ammo.ammoDirection.dx * diff, position.y + ammo.ammoDirection.dy * diff);
     }
     
     if (ammoNode.position.y > self.frame.size.height) {
@@ -178,6 +182,12 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     [self.rocket runAction:self.ammo.fire completion:^() {
       _canFire = YES;
     }];
+  }
+  
+  if (!_testCount) {
+    [self.ammo addAdditionalAmmoWithDx:-80];
+    [self.ammo addAdditionalAmmoWithDx:80];
+    _testCount = YES;
   }
   
   // Update ammo position here

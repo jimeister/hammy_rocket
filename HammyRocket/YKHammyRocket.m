@@ -23,6 +23,7 @@ NSString *const YKHammyRocketNodeName = @"YKHammyRocketNodeName";
     [self _createHammyRocketNodes];
     _maxVelocity = 170.0;
     _health = MAX_HEALTH;
+    _enableBonusAmmo = NO;
   }
   return self;
 }
@@ -112,6 +113,8 @@ NSString *const YKHammyRocketNodeName = @"YKHammyRocketNodeName";
       break;
     }
     case YKAmmo:
+      self.enableBonusAmmo = YES;
+      break;
     default:
       break;
   }

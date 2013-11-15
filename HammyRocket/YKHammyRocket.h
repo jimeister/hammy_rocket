@@ -23,6 +23,7 @@ extern NSString *const YKHammyRocketNodeName;
 @property (nonatomic) NSInteger health;
 @property (nonatomic, readonly) CGRect damageFrame; // Frame to calcuate hit test for damage
 @property (nonatomic, readonly) CGFloat hitRadius; // Another way of doing hit testing, easier
+@property (nonatomic) BOOL enableBonusAmmo;
 
 @property (nonatomic) CGFloat maxVelocity;
 
