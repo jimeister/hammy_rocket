@@ -20,6 +20,7 @@ extern NSString *const YKEnemyNodeName;
 @property (nonatomic) NSInteger damage;
 @property (readonly, nonatomic) YKPowerUp *powerUp;
 @property (nonatomic) NSInteger score; // For killing enemy
+@property (nonatomic) CGFloat baseSpeed;
 
 // Events
 @property (strong, nonatomic) NSArray *times;

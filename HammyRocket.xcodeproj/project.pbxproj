@@ -116,6 +116,8 @@
 		84E867B918357F82008D2B71 /* YKEnemyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867B818357F82008D2B71 /* YKEnemyNode.m */; };
 		84E867BC18358727008D2B71 /* YKEnemyAmmo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867BB18358727008D2B71 /* YKEnemyAmmo.m */; };
 		84E867BF1835DAD6008D2B71 /* YKEnemyEventFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867BE1835DAD6008D2B71 /* YKEnemyEventFactory.m */; };
+		84E867C21835E58B008D2B71 /* YKBigPlaneNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */; };
+		84E867C41835E874008D2B71 /* bigplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E867C31835E874008D2B71 /* bigplane.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +266,9 @@
 		84E867BB18358727008D2B71 /* YKEnemyAmmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKEnemyAmmo.m; sourceTree = "<group>"; };
 		84E867BD1835DAD6008D2B71 /* YKEnemyEventFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKEnemyEventFactory.h; sourceTree = "<group>"; };
 		84E867BE1835DAD6008D2B71 /* YKEnemyEventFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKEnemyEventFactory.m; sourceTree = "<group>"; };
+		84E867C01835E58B008D2B71 /* YKBigPlaneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKBigPlaneNode.h; sourceTree = "<group>"; };
+		84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKBigPlaneNode.m; sourceTree = "<group>"; };
+		84E867C31835E874008D2B71 /* bigplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigplane.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +344,8 @@
 				1553D4FD18359BFF005AD9EF /* YKPowerUp.m */,
 				1553D4FF1835C6EF005AD9EF /* YKLivesNodes.h */,
 				1553D5001835C6EF005AD9EF /* YKLivesNodes.m */,
+				84E867C01835E58B008D2B71 /* YKBigPlaneNode.h */,
+				84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -379,7 +386,6 @@
 			children = (
 				8432EEB81835626D00684F7E /* Utils */,
 				1553D4E718356093005AD9EF /* Nodes */,
-				1553D4BE18355919005AD9EF /* Images */,
 				840180501835537700583789 /* YKAppDelegate.h */,
 				840180511835537700583789 /* YKAppDelegate.m */,
 				84018070183553BB00583789 /* YKSpriteViewController.h */,
@@ -388,6 +394,7 @@
 				8432EEA118355E4500684F7E /* Factories */,
 				84018073183555FE00583789 /* Scenes */,
 				840180531835537700583789 /* Images.xcassets */,
+				1553D4BE18355919005AD9EF /* Images */,
 				840180481835537700583789 /* Supporting Files */,
 			);
 			path = HammyRocket;
@@ -532,6 +539,7 @@
 		8432EE6218355D4F00684F7E /* shooter */ = {
 			isa = PBXGroup;
 			children = (
+				84E867C31835E874008D2B71 /* bigplane.png */,
 				8432EE6318355D4F00684F7E /* 1945.png */,
 				8432EE6418355D4F00684F7E /* action1.png */,
 				8432EE6518355D4F00684F7E /* bugz.png */,
@@ -676,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8432EE8B18355D4F00684F7E /* char2.png in Resources */,
+				84E867C41835E874008D2B71 /* bigplane.png in Resources */,
 				1553D4F618359066005AD9EF /* flame.png in Resources */,
 				8432EE9318355D4F00684F7E /* dino.png in Resources */,
 				1553D4DD18355919005AD9EF /* hammy.png in Resources */,
@@ -779,6 +788,7 @@
 				8432EEB318355FA500684F7E /* CPSimpleSpriteFactory.m in Sources */,
 				84018072183553BB00583789 /* YKSpriteViewController.m in Sources */,
 				1553D5011835C6EF005AD9EF /* YKLivesNodes.m in Sources */,
+				84E867C21835E58B008D2B71 /* YKBigPlaneNode.m in Sources */,
 				840180761835561B00583789 /* YKTitleScene.m in Sources */,
 				1553D4F018358831005AD9EF /* YKInstructionsScene.m in Sources */,
 				84E867B618357793008D2B71 /* YKLevelEvent.m in Sources */,

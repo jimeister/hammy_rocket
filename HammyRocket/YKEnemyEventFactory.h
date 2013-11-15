@@ -27,4 +27,6 @@
 + (YKLevelEvent *)shallowLeftVEventWithNumEnemies:(NSUInteger)numEnemies delay:(CGFloat)delay position:(CGPoint)position style:(NSInteger)style
                                         baseSpeed:(CGFloat)baseSpeed;
 
++ (YKLevelEvent *)bigEnemyPlaneEventAtX:(CGFloat)x;
+
 @end

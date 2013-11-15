@@ -1,5 +1,5 @@
 //
-//  YKAirplaneNode.h
+//  YKBigPlaneNode.h
 //  HammyRocket
 //
 //  Created by Allen Cheung on 11/14/13.
@@ -8,12 +8,6 @@
 
 #import "YKEnemyNode.h"
 
-@interface YKAirplaneNode : YKEnemyNode
-
-- (instancetype)initWithStyle:(NSInteger)style;
-
-- (void)turnDown;
-
-- (void)turnRightDown;
+@interface YKBigPlaneNode : YKEnemyNode
 
 @end
