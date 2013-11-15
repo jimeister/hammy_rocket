@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1514705B1836AE0F008AE3F0 /* cloud_front.png in Resources */ = {isa = PBXBuildFile; fileRef = 151470591836AE0F008AE3F0 /* cloud_front.png */; };
+		1514705C1836AE0F008AE3F0 /* cloud_front@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1514705A1836AE0F008AE3F0 /* cloud_front@2x.png */; };
 		151ED137183698A700AC3314 /* bookmark_badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 151ED135183698A700AC3314 /* bookmark_badge.png */; };
 		151ED138183698A700AC3314 /* bookmark_badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151ED136183698A700AC3314 /* bookmark_badge@2x.png */; };
 		1553D4D318355919005AD9EF /* contribute_review_1star.png in Resources */ = {isa = PBXBuildFile; fileRef = 1553D4BF18355919005AD9EF /* contribute_review_1star.png */; };
@@ -142,6 +144,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151470591836AE0F008AE3F0 /* cloud_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_front.png; sourceTree = "<group>"; };
+		1514705A1836AE0F008AE3F0 /* cloud_front@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud_front@2x.png"; sourceTree = "<group>"; };
 		151ED135183698A700AC3314 /* bookmark_badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_badge.png; sourceTree = "<group>"; };
 		151ED136183698A700AC3314 /* bookmark_badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark_badge@2x.png"; sourceTree = "<group>"; };
 		1553D4BF18355919005AD9EF /* contribute_review_1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contribute_review_1star.png; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 		1553D4BE18355919005AD9EF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				151470591836AE0F008AE3F0 /* cloud_front.png */,
+				1514705A1836AE0F008AE3F0 /* cloud_front@2x.png */,
 				151ED135183698A700AC3314 /* bookmark_badge.png */,
 				151ED136183698A700AC3314 /* bookmark_badge@2x.png */,
 				1553D4F818359480005AD9EF /* check_burst.png */,
@@ -769,6 +775,7 @@
 				8432EE8D18355D4F00684F7E /* char4.png in Resources */,
 				8432EE6E18355D4F00684F7E /* fishdish_mockup.png in Resources */,
 				1553D4E318355919005AD9EF /* yelp_logo.png in Resources */,
+				1514705B1836AE0F008AE3F0 /* cloud_front.png in Resources */,
 				1553D4D518355919005AD9EF /* contribute_review_2star.png in Resources */,
 				8432EE8F18355D4F00684F7E /* char6.png in Resources */,
 				8432EE8018355D4F00684F7E /* arinoid_master.png in Resources */,
@@ -791,6 +798,7 @@
 				8432EE9E18355D4F00684F7E /* invader2.png in Resources */,
 				8432EE8518355D4F00684F7E /* bat.png in Resources */,
 				1553D4D418355919005AD9EF /* contribute_review_1star@2x.png in Resources */,
+				1514705C1836AE0F008AE3F0 /* cloud_front@2x.png in Resources */,
 				8432EE9418355D4F00684F7E /* pickups.png in Resources */,
 				8432EE8318355D4F00684F7E /* assort.png in Resources */,
 				8432EE7918355D4F00684F7E /* 64x128.png in Resources */,
