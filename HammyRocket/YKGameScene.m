@@ -146,18 +146,21 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
       if (ammoNode.position.x > CGRectGetMinX(node.frame) && ammoNode.position.x < CGRectGetMaxX(node.frame) &&
           ammoNode.position.y > CGRectGetMinY(node.frame) && ammoNode.position.y < CGRectGetMaxY(node.frame)) {
-
-        [self _addSmallHitAtPosition:ammoNode.position overNode:node];
-        [ammoNode removeFromParent];
         
         YKEnemyNode *enemyNode = (YKEnemyNode *)node;
-        enemyNode.health -= self.ammo.damage;
-        if (enemyNode.health <= 0) {
-          _score += enemyNode.score;
-          SKLabelNode *scoreLabel = (SKLabelNode *)[_scoreLayer childNodeWithName:kScoreNodeName];
-          scoreLabel.text = [@(_score) description];
+        if (!enemyNode.dead) {
+          [self _addSmallHitAtPosition:ammoNode.position overNode:node];
+          [ammoNode removeFromParent];
           
-          [enemyNode die];
+          enemyNode.health -= self.ammo.damage;
+          if (enemyNode.health <= 0) {
+            enemyNode.dead = YES;
+            _score += enemyNode.score;
+            SKLabelNode *scoreLabel = (SKLabelNode *)[_scoreLayer childNodeWithName:kScoreNodeName];
+            scoreLabel.text = [@(_score) description];
+            
+            [enemyNode die];
+          }
         }
       }
     }];

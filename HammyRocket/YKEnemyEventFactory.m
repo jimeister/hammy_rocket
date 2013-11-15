@@ -9,6 +9,7 @@
 #import "YKEnemyEventFactory.h"
 #import "YKLevelEvent.h"
 #import "YKAirplaneNode.h"
+#import "YKSubmarineNode.h"
 #import "YKBigPlaneNode.h"
 
 @implementation YKEnemyEventFactory
@@ -114,6 +115,13 @@
   YKLevelEvent *event = [[YKLevelEvent alloc] init];
   YKBigPlaneNode *bigPlane = [[YKBigPlaneNode alloc] init];
   event.enemies = @[[YKLevelEnemyBirth enemyBirthWithNode:bigPlane birthPlace:CGPointMake(x, 20)]];
+  return event;
+}
+
++ (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point {
+  YKLevelEvent *event = [[YKLevelEvent alloc] init];
+  YKSubmarineNode *sub = [[YKSubmarineNode alloc] init];
+  event.enemies = @[[YKLevelEnemyBirth enemyBirthWithNode:sub birthPlace:point]];
   return event;
 }
 

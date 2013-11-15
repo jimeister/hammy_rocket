@@ -29,4 +29,6 @@
 
 + (YKLevelEvent *)bigEnemyPlaneEventAtX:(CGFloat)x;
 
++ (YKLevelEvent *)submarineEventAtPoint:(CGPoint)point;
+
 @end

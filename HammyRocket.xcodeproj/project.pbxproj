@@ -120,6 +120,8 @@
 		84E867BF1835DAD6008D2B71 /* YKEnemyEventFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867BE1835DAD6008D2B71 /* YKEnemyEventFactory.m */; };
 		84E867C21835E58B008D2B71 /* YKBigPlaneNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */; };
 		84E867C41835E874008D2B71 /* bigplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E867C31835E874008D2B71 /* bigplane.png */; };
+		84E867C718360C9F008D2B71 /* YKSubmarineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E867C618360C9F008D2B71 /* YKSubmarineNode.m */; };
+		84E867C918360E6A008D2B71 /* submarine.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E867C818360E6A008D2B71 /* submarine.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +275,9 @@
 		84E867C01835E58B008D2B71 /* YKBigPlaneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKBigPlaneNode.h; sourceTree = "<group>"; };
 		84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKBigPlaneNode.m; sourceTree = "<group>"; };
 		84E867C31835E874008D2B71 /* bigplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigplane.png; sourceTree = "<group>"; };
+		84E867C518360C9F008D2B71 /* YKSubmarineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSubmarineNode.h; sourceTree = "<group>"; };
+		84E867C618360C9F008D2B71 /* YKSubmarineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSubmarineNode.m; sourceTree = "<group>"; };
+		84E867C818360E6A008D2B71 /* submarine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submarine.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +357,8 @@
 				1553D5001835C6EF005AD9EF /* YKLivesNodes.m */,
 				84E867C01835E58B008D2B71 /* YKBigPlaneNode.h */,
 				84E867C11835E58B008D2B71 /* YKBigPlaneNode.m */,
+				84E867C518360C9F008D2B71 /* YKSubmarineNode.h */,
+				84E867C618360C9F008D2B71 /* YKSubmarineNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -545,6 +552,7 @@
 		8432EE6218355D4F00684F7E /* shooter */ = {
 			isa = PBXGroup;
 			children = (
+				84E867C818360E6A008D2B71 /* submarine.png */,
 				84E867C31835E874008D2B71 /* bigplane.png */,
 				8432EE6318355D4F00684F7E /* 1945.png */,
 				8432EE6418355D4F00684F7E /* action1.png */,
@@ -709,6 +717,7 @@
 				1553D4D718355919005AD9EF /* contribute_review_3star.png in Resources */,
 				8432EE7F18355D4F00684F7E /* vehicles.png in Resources */,
 				8432EE8218355D4F00684F7E /* arc2.png in Resources */,
+				84E867C918360E6A008D2B71 /* submarine.png in Resources */,
 				8432EE7218355D4F00684F7E /* 128x128.png in Resources */,
 				8432EE9C18355D4F00684F7E /* heli.png in Resources */,
 				8432EE7A18355D4F00684F7E /* 64x64.png in Resources */,
@@ -787,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E867C718360C9F008D2B71 /* YKSubmarineNode.m in Sources */,
 				84E867BF1835DAD6008D2B71 /* YKEnemyEventFactory.m in Sources */,
 				8432EEB118355FA500684F7E /* CPMath.m in Sources */,
 				8432EE3118355C8A00684F7E /* YKGameScene.m in Sources */,

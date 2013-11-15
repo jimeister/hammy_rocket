@@ -10,7 +10,6 @@
 #import "YKGameScene.h"
 #import "YKInstructionsScene.h"
 #import "YKHighScoresScene.h"
-#import "YKBigPlaneNode.h"
 
 static NSString *const kDefaultFont = @"Courier";
 static NSString *const kStartNode = @"kStartNode";

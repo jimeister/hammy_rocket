@@ -30,7 +30,7 @@ static const CGFloat kDefaultSmokePuffBirthRate = 4.0;
         self.emissionAngle = M_PI_2;
         self.emissionAngleRange = M_PI_4 * 0.75;
         
-        self.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory circleImageWithDiameter:kDefaultSmokePuffEndingDiameter fillColor:[UIColor whiteColor] strokeColor:[UIColor whiteColor]]];
+        self.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory circleImageWithDiameter:kDefaultSmokePuffEndingDiameter fillColor:[UIColor grayColor] strokeColor:[UIColor whiteColor]]];
         self.particleSize = CGSizeMake(kDefaultSmokePuffEndingDiameter, kDefaultSmokePuffEndingDiameter);
         
         self.particleScale = 0.0;
