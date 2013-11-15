@@ -17,7 +17,7 @@
 
 - (instancetype)init {
   if ((self = [super init])) {
-    self.zPosition = -99;
+    self.zPosition = 0;
     _speed = 100;
     _timeAlive = 0;
     _cloudGenTime = (CGFloat)(arc4random() % 30) / 10;
@@ -51,12 +51,15 @@
       int32_t cloudType = arc4random() % 3;
       if (cloudType == 0) {
         SKSpriteNode *node = [self cloudNodeWithScale:1.0 name:@"Cloud"];
+        node.zPosition = -99;
         [self addChild:node];
       } else if (cloudType == 1) {
         SKSpriteNode *node = [self cloudNodeWithScale:1.5 name:@"FastCloud"];
+        node.zPosition = 99;
         [self addChild:node];
       } else if (cloudType == 2) {
         SKSpriteNode *node = [self cloudNodeWithScale:0.8 name:@"SlowCloud"];
+        node.zPosition = -99;
         [self addChild:node];
       }
     }

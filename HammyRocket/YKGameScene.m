@@ -356,6 +356,7 @@ static const CGFloat kOffsetToFinger = 100;
     CGFloat distanceToHammy = CPCGPointDistance(powerUp.position, _rocket.position);
     if (distanceToHammy < powerUp.hitRadius + _rocket.hitRadius) {
       [self.rocket applyPowerUp:powerUp];
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [powerUp removeFromParent];
     }
     

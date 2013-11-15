@@ -115,12 +115,15 @@ static NSString *const kInstructions = @"kInstructions";
     
     SKNode *node = [self nodeAtPoint:[touch locationInNode:self]];
     if (node.name == kStartNode) {
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [self _startGame];
     }
     else if (node.name == kInstructions) {
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [self _showInstructions];
     }
     else if (node.name == kHighScores) {
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [self _showHighScores];
     }
   }

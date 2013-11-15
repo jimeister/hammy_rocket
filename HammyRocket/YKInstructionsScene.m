@@ -55,7 +55,7 @@ static NSString *const kDefaultFont = @"Courier";
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   [super touchesEnded:touches withEvent:event];
-  
+  [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
   [self.view presentScene:[YKTitleScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
 }
 

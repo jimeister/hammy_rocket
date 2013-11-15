@@ -59,9 +59,11 @@ static NSString *const kQuitNode = @"kQuitNode";
     
     SKNode *node = [self nodeAtPoint:[touch locationInNode:self]];
     if (node.name == kPlayAgainNode) {
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [self.view presentScene:[YKGameScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
     }
     else if (node.name == kQuitNode) {
+      [self runAction:[SKAction playSoundFileNamed:@"menu_select_15.wav" waitForCompletion:NO]];
       [self.view presentScene:[YKTitleScene sceneWithSize:self.size] transition:[SKTransition fadeWithDuration:0.5]];
     }
   }
