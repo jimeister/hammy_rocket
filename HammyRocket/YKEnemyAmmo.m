@@ -30,4 +30,8 @@ NSString *const YKEnemyAmmoName = @"YKEnemyAmmoName";
   return image;
 }
 
+- (CGFloat)hitRadius {
+  return self.size.width/2;
+}
+
 @end

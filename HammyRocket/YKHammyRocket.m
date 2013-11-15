@@ -22,6 +22,15 @@
   return self;
 }
 
+- (CGRect)damageFrame {
+  return CGRectMake(self.position.x - self.rocket_interior.size.width/2, self.position.y - self.rocket_interior.size.height/2,
+                    self.rocket_interior.size.width, self.rocket_interior.size.height);
+}
+
+- (CGFloat)hitRadius {
+  return self.rocket_interior.size.width/2;
+}
+
 - (void)_createHammyRocketNodes {
   self.rocket = [SKSpriteNode spriteNodeWithImageNamed:@"rocket.png"];
   self.rocket.position = CGPointMake(0, 0);

@@ -35,5 +35,5 @@ CGFloat CPCGVectorAngleInRadians(CGVector vector)
 
 CGFloat CPCGPointDistance(CGPoint p1, CGPoint p2)
 {
-    return CP_SQRT(CPCGVectorMagnitude(CGVectorMake(p1.x - p2.x, p1.y - p2.y)));
+    return CPCGVectorMagnitude(CGVectorMake(p1.x - p2.x, p1.y - p2.y));
 }

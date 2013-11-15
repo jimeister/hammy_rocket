@@ -48,6 +48,7 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   
   _rocket = [[YKHammyRocket alloc] init];
   _rocket.position = CGPointMake(CGRectGetMidX(self.frame), 100);
+  _rocket.zPosition = -5;
   [self addChild:self.rocket];
   
   _ammo = [[YKRocketAmmo alloc] initWithFireRate:0.20];
@@ -84,6 +85,34 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   }
 }
 
+- (void)_addSmallHitAtPosition:(CGPoint)position overNode:(SKNode *)node {
+  CPExplosionEmitterNode *smallHit = [[CPExplosionEmitterNode alloc] init];
+  smallHit.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory starImageWithOuterRadius:24.0 innerRadius:13.0 fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
+  smallHit.particleSize = CGSizeMake(20.0, 20.0);
+  smallHit.zPosition = node.zPosition + 1;
+  smallHit.position = position;
+  smallHit.particleLifetime =
+  smallHit.yAcceleration = 10.0;
+  smallHit.particleLifetime = 1.0;
+  [smallHit advanceSimulationTime:0.5];
+  [self addChild:smallHit];
+  [smallHit explodeForDuration:0.1];
+}
+
+- (void)_addLargeHitAtPosition:(CGPoint)position overNode:(SKNode *)node {
+  CPExplosionEmitterNode *hit = [[CPExplosionEmitterNode alloc] init];
+  hit.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory starImageWithOuterRadius:24.0 innerRadius:13.0 fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
+  hit.particleSize = CGSizeMake(30.0, 30.0);
+  hit.zPosition = node.zPosition + 1;
+  hit.position = position;
+  hit.particleLifetime =
+  hit.yAcceleration = 10.0;
+  hit.particleLifetime = 1.5;
+  [hit advanceSimulationTime:0.5];
+  [self addChild:hit];
+  [hit explodeForDuration:0.2];
+}
+
 - (void)_updateAmmoPositionsWithDiff:(NSTimeInterval)diff {
   [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *ammoNode, BOOL *stop) {
     if (CGPointEqualToPoint(ammoNode.position, CGPointMake(0, 0))) {
@@ -102,18 +131,8 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
     [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
       if (ammoNode.position.x > CGRectGetMinX(node.frame) && ammoNode.position.x < CGRectGetMaxX(node.frame) &&
           ammoNode.position.y > CGRectGetMinY(node.frame) && ammoNode.position.y < CGRectGetMaxY(node.frame)) {
-        CPExplosionEmitterNode *smallHit = [[CPExplosionEmitterNode alloc] init];
-        smallHit.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory starImageWithOuterRadius:24.0 innerRadius:13.0 fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
-        smallHit.particleSize = CGSizeMake(20.0, 20.0);
-        smallHit.zPosition = node.zPosition + 1;
-        smallHit.position = ammoNode.position;
-        smallHit.particleLifetime =
-        smallHit.yAcceleration = 10.0;
-        smallHit.particleLifetime = 1.0;
-        [smallHit advanceSimulationTime:0.5];
-        [self addChild:smallHit];
-        [smallHit explodeForDuration:0.1];
-        
+
+        [self _addSmallHitAtPosition:ammoNode.position overNode:node];
         [ammoNode removeFromParent];
         
         YKEnemyNode *enemyNode = (YKEnemyNode *)node;
@@ -153,6 +172,12 @@ static NSString *const kScoreNodeName = @"kScoreNodeName";
   [self enumerateChildNodesWithName:YKEnemyAmmoName usingBlock:^(SKNode *node, BOOL *stop) {
     YKEnemyAmmo *ammo = (YKEnemyAmmo *)node;
     ammo.position = CGPointMake(ammo.position.x + ammo.velocity.dx * diff, ammo.position.y + ammo.velocity.dy * diff);
+    
+    CGFloat distanceToHammy = CPCGPointDistance(ammo.position, _rocket.position);
+    if (distanceToHammy < ammo.hitRadius + _rocket.hitRadius) {
+      [self _addLargeHitAtPosition:ammo.position overNode:_rocket];
+      [ammo removeFromParent];
+    }
   }];
 
   YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];

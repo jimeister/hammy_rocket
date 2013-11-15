@@ -13,5 +13,6 @@ extern NSString *const YKEnemyAmmoName;
 @interface YKEnemyAmmo : SKSpriteNode
 
 @property (nonatomic) CGVector velocity;
+@property (nonatomic, readonly) CGFloat hitRadius;
 
 @end

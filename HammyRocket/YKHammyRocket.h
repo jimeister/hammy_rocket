@@ -15,6 +15,8 @@
 @property (nonatomic, strong) SKSpriteNode *hammy;
 @property (nonatomic, strong) SKSpriteNode *flame;
 @property (nonatomic) NSInteger health;
+@property (nonatomic, readonly) CGRect damageFrame; // Frame to calcuate hit test for damage
+@property (nonatomic, readonly) CGFloat hitRadius; // Another way of doing hit testing, easier
 
 @property (nonatomic) CGFloat maxVelocity;
 
