@@ -39,6 +39,11 @@ static const CGFloat kDefaultExplosionEndingDiameter = 10.0;
     return self;
 }
 
+- (void)setParticleLifetime:(CGFloat)particleLifetime {
+  [super setParticleLifetime:particleLifetime];
+  self.particleAlphaSpeed = -self.particleAlpha / self.particleLifetime;
+}
+
 - (void)explodeForDuration:(NSTimeInterval)duration
 {
     self.particleBirthRate = 16.0;

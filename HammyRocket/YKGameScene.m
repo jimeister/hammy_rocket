@@ -11,6 +11,8 @@
 #import "CPMath.h"
 #import "YKLevelScheduler.h"
 #import "YKEnemyNode.h"
+#import "CPExplosionEmitterNode.h"
+#import "CPSimpleSpriteFactory.h"
 
 @interface YKGameScene ()
 @property (strong, nonatomic) YKLevelScheduler *scheduler;
@@ -92,6 +94,18 @@
     [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
       if (ammoNode.position.x > CGRectGetMinX(node.frame) && ammoNode.position.x < CGRectGetMaxX(node.frame) &&
           ammoNode.position.y > CGRectGetMinY(node.frame) && ammoNode.position.y < CGRectGetMaxY(node.frame)) {
+        CPExplosionEmitterNode *smallHit = [[CPExplosionEmitterNode alloc] init];
+        smallHit.particleTexture = [SKTexture textureWithImage:[CPSimpleSpriteFactory starImageWithOuterRadius:24.0 innerRadius:13.0 fillColor:[UIColor orangeColor] strokeColor:[UIColor orangeColor]]];
+        smallHit.particleSize = CGSizeMake(20.0, 20.0);
+        smallHit.zPosition = node.zPosition + 1;
+        smallHit.position = ammoNode.position;
+        smallHit.particleLifetime = 
+        smallHit.yAcceleration = 10.0;
+        smallHit.particleLifetime = 1.0;
+        [smallHit advanceSimulationTime:0.5];
+        [self addChild:smallHit];
+        [smallHit explodeForDuration:0.1];
+        
         [ammoNode removeFromParent];
       }
     }];
