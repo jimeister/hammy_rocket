@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "YKEnemyAmmo.h"
+#import "YKPowerUp.h"
 
 extern NSString *const YKEnemyNodeName;
 
@@ -15,6 +16,9 @@ extern NSString *const YKEnemyNodeName;
 
 @property (nonatomic) CGVector velocity;
 @property (readonly, nonatomic) YKEnemyAmmo *ammo;
+@property (nonatomic) NSInteger health;
+@property (nonatomic) NSInteger damage;
+@property (readonly, nonatomic) YKPowerUp *powerUp;
 
 // Public for subclasses, clients shouldn't touch
 @property (nonatomic) NSTimeInterval timeAlive;

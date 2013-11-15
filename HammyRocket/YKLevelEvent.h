@@ -21,5 +21,6 @@
 @interface YKLevelEvent : NSObject
 
 @property (strong, nonatomic) NSArray *enemies;
+@property (strong, nonatomic) NSArray *powerUps;
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "YKHammyRocket.h"
+#import "YKPowerUp.h"
+
+#define MAX_HEALTH  500.0
 
 @implementation YKHammyRocket
 
@@ -14,6 +17,7 @@
   if ((self = [super init])) {
     [self _createHammyRocketNodes];
     _maxVelocity = 150.0;
+    _health = MAX_HEALTH;
   }
   return self;
 }
@@ -37,6 +41,21 @@
   self.flame.position = CGPointMake(0, -35.0);
   self.flame.zPosition = self.rocket_interior.zPosition - 1;
   [self addChild:self.flame];
+}
+
+- (void)applyPowerUp:(YKPowerUp *)powerUp {
+  switch (powerUp.type) {
+    case YKHealth:
+      self.health += powerUp.value;
+      if (self.health > MAX_HEALTH) {
+        self.health = MAX_HEALTH;
+      }
+      break;
+    case YKSpeed:
+      self.maxVelocity = powerUp.value;
+    default:
+      break;
+  }
 }
 
 @end

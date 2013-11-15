@@ -8,6 +8,7 @@
 
 #import "YKLevelScheduler.h"
 #import "YKAirplaneNode.h"
+#import "YKPowerUp.h"
 
 @implementation YKLevelScheduler {
   BOOL _started;
@@ -31,6 +32,12 @@
   }
   event.enemies = enemies;
   return event;
+}
+
+- (YKLevelEvent *)basicPowerUpEvent {
+  YKLevelEvent *event = [[YKLevelEvent alloc] init];
+  YKPowerUp *powerUp = [[YKPowerUp alloc] initWithType:YKHealth value:25.0 andTimeToExist:10.0];
+  
 }
 
 - (NSDictionary *)_gameEvents {

@@ -24,6 +24,10 @@ NSString *const YKEnemyNodeName = @"YKEnemyNodeName";
   return nil;
 }
 
+- (YKPowerUp *)powerUp {
+  return nil;
+}
+
 - (void)update:(NSTimeInterval)diff {
   _timeAlive += diff;
 }
