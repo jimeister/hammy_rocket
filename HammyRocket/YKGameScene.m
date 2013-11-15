@@ -75,19 +75,26 @@
   }
   
   // Update ammo position here
-  [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *node, BOOL *stop) {
-    if (CGPointEqualToPoint(node.position, CGPointMake(0, 0))) {
-      node.position = CGPointMake(_rocket.position.x, _rocket.position.y + 40);
+  [self.ammo enumerateChildNodesWithName:@"ammo" usingBlock:^(SKNode *ammoNode, BOOL *stop) {
+    if (CGPointEqualToPoint(ammoNode.position, CGPointMake(0, 0))) {
+      ammoNode.position = CGPointMake(_rocket.position.x, _rocket.position.y + 40);
     }
     else {
       CGFloat ammoVelocity = self.ammo.ammoVelocity * diff;
-      CGPoint position = node.position;
-      node.position = CGPointMake(position.x, position.y + ammoVelocity);
+      CGPoint position = ammoNode.position;
+      ammoNode.position = CGPointMake(position.x, position.y + ammoVelocity);
     }
     
-    if (node.position.y > self.frame.size.height) {
-      [node removeFromParent];
+    if (ammoNode.position.y > self.frame.size.height) {
+      [ammoNode removeFromParent];
     }
+    
+    [self enumerateChildNodesWithName:YKEnemyNodeName usingBlock:^(SKNode *node, BOOL *stop) {
+      if (ammoNode.position.x > CGRectGetMinX(node.frame) && ammoNode.position.x < CGRectGetMaxX(node.frame) &&
+          ammoNode.position.y > CGRectGetMinY(node.frame) && ammoNode.position.y < CGRectGetMaxY(node.frame)) {
+        [ammoNode removeFromParent];
+      }
+    }];
   }];
 
   YKLevelEvent *event = [self.scheduler eventForCurrentTime:currentTime];

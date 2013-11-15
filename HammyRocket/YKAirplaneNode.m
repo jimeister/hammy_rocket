@@ -48,6 +48,11 @@
   return planeImages;
 }
 
+- (CGRect)frame {
+  return CGRectMake(self.position.x - self.bodyNode.size.width/2, self.position.y - self.bodyNode.size.height/2,
+                    self.bodyNode.size.width, self.bodyNode.size.height);
+}
+
 - (SKSpriteNode *)bodyNode {
   if (!_bodyNode) {
     _bodyNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:_images[0]]];
